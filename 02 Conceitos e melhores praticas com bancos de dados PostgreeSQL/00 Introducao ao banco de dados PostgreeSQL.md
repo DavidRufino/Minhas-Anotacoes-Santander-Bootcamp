@@ -20,13 +20,13 @@ com **Daniel Robert Costa** Database Engineer
 
 Valores brutos , fatos brutos. observações documentadas, registros soltos, que são recolhidos e armazenados sem sofrer qualquer tratamento.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704180349.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704180349.png)
 
 **Oque são informações?**
 
 Estruturação de dados, organização de dados. Conjunto de dados relacionados entre si que geram valor, que criam sentidos aos dados. Material do conhecimento.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704180557.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704180557.png)
 
 
 
@@ -36,7 +36,7 @@ Estruturação de dados, organização de dados. Conjunto de dados relacionados 
 
 Modelo mais comum, que classifica e organiza as informacoes em tabelas com linhas e colunas. As linhas, ou tuplas, são os dados organizados, são os valores das tabelas, e as colunas são os atributos destes dados.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704181008.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704181008.png)
 
 Já a maquina entende da seguinte maneira:
 
@@ -75,7 +75,7 @@ Conjuntos de dados dispostos em colunas e linhas referentes a um objetivo comum.
 - **Chave Estrangeira / Foreign Key / FK**
   - Valores de referencia a uma PK de outra tabela da mesma tabela para criar um relacionamento
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704182330.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704182330.png)
 
 
 
@@ -87,7 +87,7 @@ Chamamos pela sigla SGBD. Conjunto de programas ou software responsaveis pelo ge
 
 Programas que facilitam a administracao de um banco de dados.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704182717.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704182717.png)
 
 
 
@@ -103,7 +103,7 @@ Teve inicio no Departamento de Ciência da Computação na Universidade da Calif
 
 SGBD Opensource.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704182919.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704182919.png)
 
 
 
@@ -115,7 +115,7 @@ Significa que você tem processos que acontece somente na maquina cliente e proc
 
 Processos que acontecem no Cliente são interface Grafica, Terminal ou Aplicação Web/Mobile;
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210704183337.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210704183337.png)
 
 **Principais caracteristicas**
 

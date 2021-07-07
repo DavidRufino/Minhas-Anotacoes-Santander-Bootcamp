@@ -70,7 +70,7 @@ Arquivo responsavel pelo controle de autenticacao dos usuarios no servidor Postg
 
 O formato do arquivo pode ser:
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705204357.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705204357.png)
 
 **Metodos de autenticação**
 
@@ -87,7 +87,7 @@ O formato do arquivo pode ser:
 - **RADIUS** (radius server)
 - **CERT** (autenticação via certificado ssl do cliente)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705205204.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705205204.png)
 
 
 
@@ -103,7 +103,7 @@ Localizado no diretorio de dados PGDATA de sua instalacao.
 
 A opcao ident deve ser utilizada no arquivo **pg_hba.conf**
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705205537.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705205537.png)
 
 
 
@@ -128,7 +128,7 @@ A opcao ident deve ser utilizada no arquivo **pg_hba.conf**
 
 **Windows**
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705210220.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705210220.png)
 
 
 
@@ -163,13 +163,13 @@ Conjunto de schemas com seus objetos/relações (tabelas, funções, triggers, v
 
 Conjunto de objetos/relações (tabelas, funções, triggers, views, etc).
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705210958.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705210958.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705211041.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211041.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705211109.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211109.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210705211137.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211137.png)
 
 
 
@@ -224,7 +224,7 @@ Nas versões anteriores do PostgreSQL 8.1, **usuarios** e **roles** tinham compo
 
 É possível que roles pertençam a outras **roles**;
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706161829.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706161829.png)
 
 ### Parte 2: Administrando users/roles/groups
 
@@ -284,9 +284,9 @@ where option can be:
 
 **|SYSID uid** - DEPLECATED
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706162535.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706162535.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706164555.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706164555.png)
 
 #### Associação entre roles
 
@@ -345,7 +345,7 @@ DROP ROLE role_specification;
 
 São os privilegios de acesso aos objetos do banco de dados.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706171430.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706171430.png)
 
 **DATABASE**
 
@@ -421,9 +421,9 @@ São as tabelas, views, funcoes, types, sequences, entre outros, pertencentes ao
 
 **COMANDOS**
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706175212.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175212.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706175448.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175448.png)
 
 ### Parte 2: Tabelas, Colunas e Tipos de dados
 
@@ -435,11 +435,11 @@ As colunas sao consideradas como 'Campos da tabela', como atributos da tabela.
 
 As linhas de uma tabela são chamadas também de tuplas, e é onde estão contidos os valores, os dados.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706175823.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175823.png)
 
 **NA PRATICA**
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706175912.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175912.png)
 
 
 
@@ -453,7 +453,7 @@ No conceito de modelo de dados relacional e obedecendo as regras de normalizaç�
 - Não devem ser usadas chaves externas.
 - Não deve conter informação volátil.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706180625.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706180625.png)
 
 
 
@@ -463,7 +463,7 @@ Campo, ou conjunto de campos que são referencias de chaves primarias de outras 
 
 Sua principal função é garantir a integridade referencial entre tabelas.
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706180829.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706180829.png)
 
 
 
@@ -471,13 +471,13 @@ Sua principal função é garantir a integridade referencial entre tabelas.
 
 Numeric Types, Monetary Types, Character Types, Binary Data Types, Date/Time Types, Boolean Type, Enumerated Types, Geometric Types, Network Address Types, Bit String Types, TextSearch Types, UUID Type, XML Type, XML Type, JSON Types, Arrays, Composite Types, Range Types, Domain Types, Object Idnetifier Types, pg_Isn Type, Pseudo-Types
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706181425.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181425.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706181540.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181540.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706181736.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181736.png)
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\02 Conceitos e melhores praticas com bancos de dados PostgreeSQL\20210706181811.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181811.png)
 
 
 
