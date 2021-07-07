@@ -7,7 +7,7 @@
 - Esse comando cria a pasta oculta .git
 - inicializa um conceito do GIT chamada **REPOSITORIO**
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\01 Introducao ao Git e ao Github\20210703231714.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/01%20Introducao%20ao%20Git%20e%20ao%20Github/20210703231714.png)
 
 
 
@@ -21,7 +21,7 @@
 
 ###### REPOSITORIOS
 
-![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\01 Introducao ao Git e ao Github\20210703232440.png)
+![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/01%20Introducao%20ao%20Git%20e%20ao%20Github/20210703232440.png)
 
 
 
