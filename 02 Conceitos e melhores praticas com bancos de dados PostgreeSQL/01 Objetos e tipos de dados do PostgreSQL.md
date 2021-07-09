@@ -473,11 +473,11 @@ Numeric Types, Monetary Types, Character Types, Binary Data Types, Date/Time Typ
 
 ![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181425.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181540.png)
+![](20210706181540.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181736.png)
+![](20210706181736.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181811.png)
+![](20210706181811.png)
 
 
 
@@ -505,21 +505,25 @@ DROP [objeto] [nome do objeto] [opções];
 
 ***PARA DATABASE**
 
+```
 CREATE DATABASE dadosbancarios;
 
 ALTER DATABASE dadosbancarios OWNER TO diretoria;
 
 DROP DATABASE dadosbancarios;
+```
 
 
 
 ***PARA SCHEMA**
 
+```
 CREATE SCHEMA IF NOT EXISTS banco;
 
 ALTER SCHEMA bancos OWNER TO diretoria;
 
 DROP SCHEMA IF EXISTS banco;
+```
 
 
 
@@ -539,6 +543,7 @@ DROP TABLE [nome da tabela];
 
 ***MAIS EXEMPLOS PARA TABELAS**
 
+```
 CREATE TABLE IF NOT EXISTS banco(
 
 codigo INTEGER PRIMARY KEY,
@@ -564,14 +569,17 @@ PRIMARY KEY (codigo)
 ALTER TABLE banco ADD COLUMN tem_poupanca BOOLEAN;
 
 DROP TABLE IF EXISTS banco;
+```
 
 
 
 **PARA INSERT**
 
+```
 INSERT INTO [nome da tabela] ([campos da tabela,]) VALUES ([valores de acordo com a ordem dos campos acima,]);
 
 INSERT INTO [nome da tabela] ([campos da tabela,]) SELECT [valores de acordo com a ordem dos campos acima,];
+```
 
 
 
@@ -591,42 +599,55 @@ UPDATE [nome da tabela] SET
 
 ***EXEMPLO DE UPDATE**
 
+```
 UPDATE banco SET codigo = 500 WHERE codigo = 100;
 
 UPDATE banco SET data_criacao = now() WHERE data_criacao IS NULL;
+```
 
 
 
 **PARA DELETE**
 
+```
 DELETE FROM [nome da tabela] [WHERE + condições]
+```
 
 **ATENÇÃO: muito cuidado com os deletes. Sempre utilize-os com condição.**
 
 **EXEMPLO DE DELETE**
 
+```
 DELETE FROM BANCO WHERE codigo = 512;
 
 DELETE FROM banco WHERE nome = 'Conta Digital';
+```
 
 
 
 **PARA SELECT**
 
+```
 SELECT [campos da tabela] FROM [nome da tabela] [WHERE + condicoes]
+```
 
 **DICAS DE BOAS PRÁTICAS = Evite sempre que puder o SELECT**
 
 ***EXEMPLO PARA SELECT**
 
+```
 SELECT codigo, nome FROM banco;
 
 SELECT codigo, nome FROM banco WHERE data_criacao > '2019-10-15 15:00:00';
+```
+
+
 
 ****
 
 **DDL MÃO NA MASSA**
 
+```
 CREATE TABLE IF NOT EXISTS banco(
 	numero INTEGER NOT NULL,
 	nome VARCHAR(50) NOT NULL,
@@ -685,6 +706,9 @@ CREATE TABLE cliente_transacoes(
 	data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (banco_numero, agencia_numero, conta_corrente_numero, conta_corrente_digito, cliente_numero) REFERENCES conta_corrente (banco_numero, agencia_numero, numero, digito, cliente_numero)
 );
+```
+
+
 
 ****
 
