@@ -70,7 +70,7 @@ Arquivo responsavel pelo controle de autenticacao dos usuarios no servidor Postg
 
 O formato do arquivo pode ser:
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705204357.png)
+![](img/20210705204357.png)
 
 **Metodos de autenticação**
 
@@ -87,7 +87,7 @@ O formato do arquivo pode ser:
 - **RADIUS** (radius server)
 - **CERT** (autenticação via certificado ssl do cliente)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705205204.png)
+![](img/20210705205204.png)
 
 
 
@@ -103,7 +103,7 @@ Localizado no diretorio de dados PGDATA de sua instalacao.
 
 A opcao ident deve ser utilizada no arquivo **pg_hba.conf**
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705205537.png)
+![](img/20210705205537.png)
 
 
 
@@ -128,7 +128,7 @@ A opcao ident deve ser utilizada no arquivo **pg_hba.conf**
 
 **Windows**
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705210220.png)
+![](img/20210705210220.png)
 
 
 
@@ -163,13 +163,13 @@ Conjunto de schemas com seus objetos/relações (tabelas, funções, triggers, v
 
 Conjunto de objetos/relações (tabelas, funções, triggers, views, etc).
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705210958.png)
+![](img/20210705210958.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211041.png)
+![](img/20210705211041.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211109.png)
+![](img/20210705211109.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210705211137.png)
+![](img/20210705211137.png)
 
 
 
@@ -224,7 +224,7 @@ Nas versões anteriores do PostgreSQL 8.1, **usuarios** e **roles** tinham compo
 
 É possível que roles pertençam a outras **roles**;
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706161829.png)
+![](img/20210706161829.png)
 
 ### Parte 2: Administrando users/roles/groups
 
@@ -284,7 +284,7 @@ where option can be:
 
 **|SYSID uid** - DEPLECATED
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706162535.png)
+![](img/20210706162535.png)
 
 ![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706164555.png)
 
@@ -343,35 +343,49 @@ DROP ROLE role_specification;
 
 **Definição**
 
-São os privilegios de acesso aos objetos do banco de dados.
+São os privilégios de acesso aos objetos do banco de dados.
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706171430.png)
+![](img/20210706171430.png)
 
 **DATABASE**
 
+```
 GRANT {{CREATE | CONNECT| TEMPORARY|TEMP}[...]| ALL [PRIVILEGES]} ON DATABASE databse_name [...] TO role_specification [...] [WITH GRANT OPTION]
+```
 
 **SCHEMA**
 
+```
 GRANT {{CREATE|USAGE} [...] | ALL [PRIVILEGES]} ON SHCEMA schema_name [...] TO role_specification [...] [WITH GRANT OPTION]
+```
 
 **TABLE** 
 
+```
 GRANT {{SELECT|INSERT|UPDATE|DELETE|TRUNCATE|REFERENCES|TRIGGER}[...]|ALL [PRIVILEGES] } ON { [TABLE] table_name [...] | ALL TABLES IN SCHEMA schema_name [...] } TO role_specification [...] [WITH GRANT OPTION]
+```
 
 **REVOKE** - Retira as permissões da role
 
 **DATABASE**
 
+```
 REVOKE [GRANT OPTION FOR]{{CREATE|CONNECTION|TEMPORARY|TEMP}[...]|ALL[PRIVILEGES]} ON DATABASE databse_name [...] FROM {[GROUP] role_name| PUBLIC} [...] [CASCADE|RESTRICT]
+```
 
 **SCHEMA**
 
+```
 REVOKE [GRANT OPTION FOR] {{CREATE|USAGE} [...] |ALL[PRIVILEGES]} ON SCHEMA schema_name [...] FROM {[GROUP] role_name | PUBLIC} [...] [CASCADE|RESTRICT]
+```
 
 **TABLE**
 
+```
 REVOKE [GRANT OPTION FOR] {{SELECT|INSERT|UPDATE|DELETE|TRUNCATE|REFERENCES|TRIGGER}[...]|ALL [PRIVILEGES]} ON {[TABLE] table_name [...] | ALL TABLES IN SCHEMA schema_name [...] } FROM {[GROUP] role_name | PUBLIC } [...] | CASCADE | RESTRICT]
+```
+
+
 
 #### REVOGANDO TODAS AS PERMISSÕES (SIMPLIFICADO)
 
@@ -421,9 +435,9 @@ São as tabelas, views, funcoes, types, sequences, entre outros, pertencentes ao
 
 **COMANDOS**
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175212.png)
+![](img/20210706175212.png)
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175448.png)
+![](img/20210706175448.png)
 
 ### Parte 2: Tabelas, Colunas e Tipos de dados
 
@@ -435,11 +449,11 @@ As colunas sao consideradas como 'Campos da tabela', como atributos da tabela.
 
 As linhas de uma tabela são chamadas também de tuplas, e é onde estão contidos os valores, os dados.
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175823.png)
+![](img/20210706175823.png)
 
 **NA PRATICA**
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706175912.png)
+![](img/20210706175912.png)
 
 
 
@@ -453,7 +467,7 @@ No conceito de modelo de dados relacional e obedecendo as regras de normalizaç�
 - Não devem ser usadas chaves externas.
 - Não deve conter informação volátil.
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706180625.png)
+![](img/20210706180625.png)
 
 
 
@@ -463,7 +477,7 @@ Campo, ou conjunto de campos que são referencias de chaves primarias de outras 
 
 Sua principal função é garantir a integridade referencial entre tabelas.
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706180829.png)
+![](img/20210706180829.png)
 
 
 
@@ -471,13 +485,13 @@ Sua principal função é garantir a integridade referencial entre tabelas.
 
 Numeric Types, Monetary Types, Character Types, Binary Data Types, Date/Time Types, Boolean Type, Enumerated Types, Geometric Types, Network Address Types, Bit String Types, TextSearch Types, UUID Type, XML Type, XML Type, JSON Types, Arrays, Composite Types, Range Types, Domain Types, Object Idnetifier Types, pg_Isn Type, Pseudo-Types
 
-![](https://raw.githubusercontent.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/master/02%20Conceitos%20e%20melhores%20praticas%20com%20bancos%20de%20dados%20PostgreeSQL/20210706181425.png)
+![](img/20210706181425.png)
 
-![](20210706181540.png)
+![](img/20210706181540.png)
 
-![](20210706181736.png)
+![](img/20210706181736.png)
 
-![](20210706181811.png)
+![](img/20210706181811.png)
 
 
 

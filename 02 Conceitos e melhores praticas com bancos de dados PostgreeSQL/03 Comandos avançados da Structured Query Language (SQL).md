@@ -129,26 +129,26 @@ INSERT INTO funcionarios (nome, gerente) VALUES ('Cremilda', 2);
 INSERT INTO funcionarios (nome, gerente) VALUES ('Wagner', 4);
 ```
 
-![](20210708175837.png)
+![](img/20210708175837.png)
 
 ```
 SELECT id, nome, gerente FROM funcionarios WHERE gerente IS NULL;
 ```
 
-![](20210708180037.png)
+![](img/20210708180037.png)
 
 ```
 SELECT id, nome, gerente FROM funcionarios WHERE id = 999;
 ```
 
-![](20210708180055.png)
+![](img/20210708180055.png)
 
 ```
 SELECT id, nome, gerente FROM funcionarios WHERE gerentes IS NULL UNION ALL;
 SELECT id, nome, gerente FROM funcionarios WHERE id = 999;
 ```
 
-![](20210708180037.png)
+![](img/20210708180037.png)
 
 ```
 CREATE OR REPLACE RECURSIVE VIEW vw_funcionarios(id, gerente, funcionario) AS (

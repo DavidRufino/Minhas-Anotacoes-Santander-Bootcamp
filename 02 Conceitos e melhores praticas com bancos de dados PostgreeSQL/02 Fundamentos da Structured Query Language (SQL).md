@@ -104,7 +104,7 @@ Melhor prática utilizar **LEFT JOIN**.
 
 Evite **SELECT * ** , nem sempre você quer trazer TODAS as colunas do seu banco de dados.
 
-![](20210707235850.png)
+![](img/20210707235850.png)
 
 Exemplo de busca com *.xls, a intenção da busca era trazer apenas o SELECT_ID.xls com apenas 6,1kb. Com o asterisco, a busca acrescentou o SELCT_FULL que não era necessário, oque acrescentou 11,8kb a busca.
 
@@ -311,7 +311,7 @@ ORDER BY tipo_transacao_id DESC;
 
 ### JOIN (INNER)
 
-![](20210708152719.png)
+![](img/20210708152719.png)
 
 Imagina você tendo duas ou mais tabelas, e você vai fazer um JOIN entre elas, quando você faz esse JOIN, você sempre vai utilizar campos das tabelas que referenciam uma as outras. 
 
@@ -325,17 +325,17 @@ JOIN tabela_2 ON tabela_2.campo = tabela_1.campo;
 -- Pode ser qualquer campo, porem, a melhor pratica é utilizar campos como: Foreing Keys (na tabela 2 no caso) e Primary Keys (na outra tabela) pois o relacionamento é mais rapido, ele segue uma indexação no banco de dados que traz o resultado de uma forma mais inteligente.
 ```
 
-![](20210708153950.png)
+![](img/20210708153950.png)
 
-![](20210708154002.png)
+![](img/20210708154002.png)
 
-![](20210708154018.png)
+![](img/20210708154018.png)
 
 
 
 ### LEFT JOIN (OUTER)
 
-![](20210708154206.png)
+![](img/20210708154206.png)
 
 LEFT JOIN - As tabelas que estão no relacionamento a esquerda, elas vão trazer a tabela por completo e a tabela da direita, se houver um relacionamento, ele vai retornar o dado, se não, ele vai retornar o dado NULL. 
 
@@ -349,13 +349,13 @@ LEFT JOIN tabela_2 ON tabela_2.campo = tabela_1.campo
 -- tabela_2 FICARIA A DIREITA
 ```
 
-![](20210708155604.png)
+![](img/20210708155604.png)
 
 
 
 ### RIGHT JOIN (OUTER)
 
-![](20210708155650.png)
+![](img/20210708155650.png)
 
 Semelhante ao LEFT JOIN, porem esta prioriza as tabelas a direita
 
@@ -365,11 +365,11 @@ FROM tabela_1
 RIGHT JOIN tabela_2 ON tabela_2.campo = tabela_1.campo
 ```
 
-![](20210708160144.png)
+![](img/20210708160144.png)
 
 ### FULL JOIN
 
-![](20210708160220.png)
+![](img/20210708160220.png)
 
 O FULL JOIN traz todas as relações possíveis.
 
