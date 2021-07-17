@@ -116,7 +116,7 @@ bolean bo = true;
 boolean bo2 = false;
 ```
 
-![](img\20210712161335.png)
+![](img/20210712161335.png)
 
 
 
