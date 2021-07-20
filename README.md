@@ -6,5 +6,5 @@ Minhas anotações do Bootcamp Santander
 
 **Conceitos e melhores práticas com banco de dados PostgreSQL** apresentado pelo **Daniel Costa**
 
-**Desenvolvimento básico em Java** apresentado pelo **Prof. André Luis Gomes**, **Marco Paulo Ollivier**, **Gabriel Beck dos Santos** e **Augusto Júlio**
+**Desenvolvimento básico em Java** apresentado pelo **Prof. André Luis Gomes**, **Marco Paulo Ollivier**, **Gabriel Beck dos Santos**, **Augusto Júlio** e **Alex Duarte Ferreira**
 
