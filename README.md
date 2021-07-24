@@ -12,3 +12,5 @@
 
 **Desenvolvimento avançado em Java** apresentado pelo **João Paulo Oliveira Santos**
 
+**Aprenda o que são Estrutura de Dados e Algoritmos** apresentado pelo **Bruno Dias**
+
