@@ -97,7 +97,7 @@ Enquanto **Arrays** nos permite armazenas vários dados de um único tipo de dad
 Um **registro** é composto por campos que especificam cada uma das informações que o compõem. Muitas coisas do nosso cotidiano se encaixam no conceito de Registro: passagem de ônibus, folha de cheque, livros, filmes, etc.
 
 Exemplo de registro de um cliente:
-![](\img/20210724194305.png)
+![](img/20210724194305.png)
 
 Toda estrutura de registro tem um nome (exp.: Livro), e seus campos podem ser acessados por meio do uso do operador ponto (.). Por exemplo, para acessar o preço de um livro, poderíamos utilizar a seguinte declaração:
 
