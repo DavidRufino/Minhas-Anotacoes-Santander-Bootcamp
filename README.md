@@ -14,3 +14,4 @@
 
 **Aprenda o que são Estrutura de Dados e Algoritmos** apresentado pelo **Bruno Dias**
 
+**Implementando Collections e Streams com Java** apresentando pelo **Wesley Fuchter**

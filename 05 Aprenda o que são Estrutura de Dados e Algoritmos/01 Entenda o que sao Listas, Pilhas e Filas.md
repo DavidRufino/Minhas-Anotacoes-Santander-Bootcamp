@@ -64,7 +64,7 @@ O primeiro elemento a ser retirado é o último que tiver sido inserido.
 
 O primeiro elemento a ser retirado é o primeiro que tiver sido inserido.
 
-> ![](D:\Users\David Rufino\Documents\Estudo, Escola\Cursos\Bootcamp Santander FullStack\05 Aprenda o que são Estrutura de Dados e Algoritmos\img\20210724210831.png)
+> ![](img/20210724210831.png)
 >
 > Exemplo de execução de um código FIFO com as operações *enqueue* (enfileirar) e *dequeue* (desenfileirar). Imagem retirada do [Wikipédia](https://pt.wikipedia.org/wiki/FIFO)
 
