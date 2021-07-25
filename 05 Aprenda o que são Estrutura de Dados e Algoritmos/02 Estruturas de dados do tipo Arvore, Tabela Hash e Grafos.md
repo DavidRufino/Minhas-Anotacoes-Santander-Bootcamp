@@ -42,7 +42,7 @@ A **Tabela Hash** permite a associação de "valores" a "chaves"
 São estruturas que permitem programar a **relação** entre **objetos**. 
 Os **objetos** são vértices ou "nós" do grafo e os **relacionamentos** são arestas
 
-![](img/20210725172751.svg)
+![](img/20210725172751.png)
 
 > Um grafo com três vértices (circulo) unidos por três arestas (setas).
 
