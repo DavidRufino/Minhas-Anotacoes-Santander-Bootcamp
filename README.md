@@ -2,6 +2,12 @@
 
 
 
+Repositório no GitHub contendo minhas anotações que estou fazendo dos cursos do Santander Fullstack Developer, servindo para futuras consultas.
+
+Sinta-se à vontade em agregar as a anotações também. 
+
+
+
 **Logica de programação essencial** apresentado pelo **Denilson Bonatti**
 
 **Introdução ao Git e ao GitHub** apresentado pelo **Otávio Reis**
@@ -15,3 +21,8 @@
 **Aprenda o que são Estrutura de Dados e Algoritmos** apresentado pelo **Bruno Dias**
 
 **Implementando Collections e Streams com Java** apresentando pelo **Wesley Fuchter**
+
+**Trabalhando com Banco de Dados utilizando JDBC e JPA** apresentado pelo **Daniel Karam**
+
+
+
