@@ -6,9 +6,7 @@ Repositório no GitHub contendo minhas anotações que estou fazendo dos cursos 
 
 Sinta-se à vontade em agregar as a anotações também. 
 
-
-
-
+.
 
 **Logica de programação essencial** apresentado pelo **Denilson Bonatti**
 
@@ -25,6 +23,8 @@ Sinta-se à vontade em agregar as a anotações também.
 **Implementando Collections e Streams com Java** apresentando pelo **Wesley Fuchter**
 
 **Trabalhando com Banco de Dados utilizando JDBC e JPA** apresentado pelo **Daniel Karam**
+
+**Introdução ao Framework Spring Boot** apresentado pelo **Rodrigo Peleias**
 
 
 
