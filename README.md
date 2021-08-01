@@ -8,6 +8,8 @@ Sinta-se à vontade em agregar as a anotações também.
 
 
 
+
+
 **Logica de programação essencial** apresentado pelo **Denilson Bonatti**
 
 **Introdução ao Git e ao GitHub** apresentado pelo **Otávio Reis**
