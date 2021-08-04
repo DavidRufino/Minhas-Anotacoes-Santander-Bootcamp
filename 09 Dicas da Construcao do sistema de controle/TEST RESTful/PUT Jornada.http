@@ -1,0 +1,7 @@
+PUT http://localhost:8081/jornada
+Content-Type: application/json
+
+{
+    "id": 1,
+    "descricao": "PJ"
+}

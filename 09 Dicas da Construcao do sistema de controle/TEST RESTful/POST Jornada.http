@@ -1,0 +1,6 @@
+POST http://localhost:8081/jornada
+Content-Type: application/json
+
+{
+    "descricao": "CLT"
+}
