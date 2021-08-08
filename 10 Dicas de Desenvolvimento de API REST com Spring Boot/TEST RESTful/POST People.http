@@ -1,0 +1,15 @@
+POST http://localhost:8080/api/v1/people
+Content-Type: application/json
+
+{
+    "firstName": "Rodrigo",
+    "lastName": "Mercules",
+    "cpf": "588.470.900-59",
+    "birthDate": "11-11-2019",
+    "phones": [
+        {
+            "type": "MOBILE",
+            "number": "(21)99999999"
+        }
+    ]
+}

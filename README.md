@@ -26,5 +26,7 @@ Sinta-se à vontade em agregar as a anotações também.
 
 **Introdução ao Framework Spring Boot** apresentado pelo **Rodrigo Peleias**
 
+**Construindo um sistema de controle de ponto e acesso com Spring Boot** apresentado pelo **Rodolfo Gomes**
 
+**Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot** apresentado pelo **Rodrigo Peleias**
 

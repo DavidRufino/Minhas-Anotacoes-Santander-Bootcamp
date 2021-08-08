@@ -47,11 +47,46 @@ Se estiver lidando com dinheiro, ou se a precisão é uma obrigação, use `BigD
 
 
 
-## JPA *@Embeddable* e *@EmbeddedId*
+## JPA 
+
+#### *@Embeddable* e *@EmbeddedId*
 
 Em software, encontramos muitos casos de uso em que precisamos ter uma chave primária composta para definir uma entrada em uma tabela. **Chaves primárias compostas são chaves que usam mais de uma coluna para identificar uma linha na tabela de forma exclusiva** .
 
 Representamos uma chave primária composta em Spring Data usando a anotação `@Embeddable` em uma classe. Esta chave é então incorporado na classe entidade correspondente da tabela como a chave primária composta utilizando o `@EmbeddedId` anotação sobre um campo da `@Embeddable` tipo.
+
+
+
+#### Relacionamento
+
+Os mapeamentos de associação são um dos principais recursos do JPA e do [Hibernate](http://www.hibernate.org/) . Eles modelam o relacionamento entre duas tabelas de banco de dados como atributos em seu modelo de domínio:
+
+- `@ManyToOne` - Onde uma entidade (coluna ou conjunto de colunas) é / são referenciada com outra entidade (coluna ou conjunto de colunas) que contém valores únicos.
+- `@OneToMany` - Nesse relacionamento, cada linha de uma entidade é referenciada a muitos registros filho em outra entidade.
+- `@OneToOne` - Um item pode pertencer a apenas um outro item.
+- `@ManyToMany` - Uma ou mais linhas de uma entidade estão associadas a mais de uma linha em outra entidade.
+
+
+
+#### Lazy e Eager
+
+Em um **relacionamento** entre duas entidades, quando é carregado uma entidade a partir do banco de dados, o **JPA** carrega seus campos de identificação, nome e endereço. Mas você tem duas opções para o carregamento da tabela relacionada com a entidade que esta sendo carregada:
+
+- `FetchType.LAZY` - Faz com que determinados objetos **não sejam carregados** do banco até que você precise deles (apenas quando você solicitar explicitamente o carregamento destes);
+- `FetchType.EAGER` - Oposto ao Lazy. Carrega os dados mesmo que você não vá utilizá-los;
+
+
+
+#### CascadeType
+
+O **CascadeType** define o conjunto de operações em cascata que são propagadas para a entidade associada. A função do **Cascade** é cascatear operações de persistência. É utilizada apenas quando existe algum tipo de relacionamento entre 2 ou mais classes.
+
+- **ALL** = Realiza todas as operações em cascata
+- **DETACH** = Realiza a operação *detach* em cascata
+- **MERGE** = Realiza a operação *merge* em cascata
+- **PERSIST** = Realiza a operação *persist* em cascata
+- **REFRESH** = Realiza a operação *refresh* em cascata
+- **REMOVE** = Realiza a operação *remove* em cascata
 
 
 
@@ -85,12 +120,18 @@ Nomes recomendados para as Package/Pastas:
 - **controller** - controller class;
 - **exception** - exception class;
 - **model** - pojos classes will be present;
+- **entity** - The package name for the database table should be **entity**. Entity classes should be under domain package, which does not to be appended with the class name. It can be like Book.class, School.class, etc..,
 - **security** - security classes;
 - **service** - Impl classes; E todas as class com Sufixo: Service
 - **util** - utility classes;
 - **validation** - validators classes;
 - **bootloader** - main class;
 - **repository** - repository class;
+- **enums** - package contendo os enum;
+- **dto** - package DTO (**Data Transfer Object**) é a implementação do pacote Data Parse Object, que é justamente objetos para fazer a transferência de dados, sera responsavel por receber todo os dados
+  - subfolder: **request**
+  - subfolder: **response**
+
 - **swagger** - Fornece ferramentas para: auxiliar na definição do arquivo de configuração (**Swagger** Editor), interagir com API através das definições do arquivo de configuração (**Swagger** UI) e gerar templates de código a partir do arquivo de configuração (**Swagger** Codegen).
 
 
@@ -110,7 +151,7 @@ Para criarmos os controladores, que são responsáveis por fazer a interface da 
 
 ## Spring Data – CrudRepository
 
-**CrudRepository** é uma **interface Spring Data para operações CRUD genéricas em um repositório de um tipo específico.** Ele fornece vários métodos prontos para usar para interagir com um banco de dados.
+**[CrudRepository](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html)** é uma **interface Spring Data para operações CRUD genéricas em um repositório de um tipo específico.** Ele fornece vários métodos prontos para usar para interagir com um banco de dados.
 
 - **save()** - Utilizado para adicionar uma nova instância ou para atualizar uma instância;
 - **findById()** - Recupera uma entidade por seu id.
@@ -179,3 +220,13 @@ Docs Spring. **Interface CrudRepository<T,ID>** - https://docs.spring.io/spring-
 Vojtech Ruzicka. **Documenting Spring Boot REST API with Swagger and SpringFox** - https://www.vojtechruzicka.com/documenting-spring-boot-rest-api-swagger-springfox/
 
 Raphael Carvalho. **Spring Boot + Swagger: documentando sua API automaticamente** - https://medium.com/@raphaelbluteau/spring-boot-swagger-documentando-sua-api-automaticamente-27903293aeb6
+
+StackOverflow. **what is best practice to package structuring Spring project?** - https://stackoverflow.com/questions/56897204/what-is-best-practice-to-package-structuring-spring-project
+
+TutorialsPoint. **JPA - Entity Relationships** - https://www.tutorialspoint.com/jpa/jpa_entity_relationships.htm
+
+Docs Oracle. **Enum CascadeType** - https://docs.oracle.com/javaee/6/api/javax/persistence/CascadeType.html
+
+Dev Media. **Cascade Hibernate: Conhecendo diferentes tipos** - https://www.devmedia.com.br/cascade-hibernate-conhecendo-diferentes-tipos/28892
+
+StackOverflow. **Qual a diferença entre DAO e Repository?** - https://pt.stackoverflow.com/questions/12927/qual-a-diferen%C3%A7a-entre-dao-e-repository

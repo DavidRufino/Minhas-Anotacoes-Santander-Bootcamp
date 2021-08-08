@@ -1,0 +1,15 @@
+POST https://project2dio-live.herokuapp.com/api/v1/people
+Content-Type: application/json
+
+{
+    "firstName": "Rodrigo",
+    "lastName": "Mercules",
+    "cpf": "371.519.070-10",
+    "birthDate": "11-11-2019",
+    "phones": [
+        {
+            "type": "MOBILE",
+            "number": "(21)99999999"
+        }
+    ]
+}
