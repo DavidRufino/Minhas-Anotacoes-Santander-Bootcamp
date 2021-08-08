@@ -1,4 +1,5 @@
-[Dica Complementar Anterior](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/blob/master/09%20Dicas%20da%20Construcao%20do%20sistema%20de%20controle/0%20Dicas%20e%20Comandos.md)
+| [Dicas e Comandos Anterior](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/blob/master/09%20Dicas%20da%20Construcao%20do%20sistema%20de%20controle/0%20Dicas%20e%20Comandos.md) |
+| :----------------------------------------------------------- |
 
 # Padrão Arquitetura REST
 
@@ -36,7 +37,6 @@ A troca mensagens neste nível pode até estar serializadas em formatos como XML
 | **GET/POST** | /deleteCustomer/1 |  Delete   |
 
 > Repare que o modelo acima, apesar de ser o modelo mais comum, faz uso apenas dos verbos `GET` e `POST`, e tem nomenclatura de recursos em um formato que não segue nenhum padrão. Mesmo que a resposta dessas requisições estejam no formato JSON, a implementação dos métodos foge do contexto de REST, logo ***… nada a ver com REST e muito distante de RESTful.\***
->
 
 
 

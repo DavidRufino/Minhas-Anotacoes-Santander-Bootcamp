@@ -7,3 +7,7 @@ com a extensão: [REST Client](https://marketplace.visualstudio.com/items?itemNa
 
 
 
+# Sumário
+
+- [0 Dicas e Comandos.md](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/blob/master/09 Dicas da Construcao do sistema de controle/0 Dicas e Comandos.md)
+

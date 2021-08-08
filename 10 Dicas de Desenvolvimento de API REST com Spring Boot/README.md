@@ -7,3 +7,6 @@ com a extensão: [REST Client](https://marketplace.visualstudio.com/items?itemNa
 
 
 
+# Sumário
+
+- [00 Dicas de API REST com Spring Boot.md](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/blob/master/10 Dicas de Desenvolvimento de API REST com Spring Boot/00 Dicas de API REST com Spring Boot.md)

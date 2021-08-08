@@ -1,3 +1,6 @@
+| [Próxima Dicas de API REST com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/blob/master/10%20Dicas%20de%20Desenvolvimento%20de%20API%20REST%20com%20Spring%20Boot/00%20Dicas%20de%20API%20REST%20com%20Spring%20Boot.md) |
+| -----------------------------------------------------------: |
+
 ## Lombok
 
 O plug-in **[Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)** facilita na hora de construir as **classes de modelo** não sendo necessário gerar/criar os: **Getter and Setter**, **equals() and hashCode()** e os **Constructor** (com assinatura e sem assinatura). Só é preciso adicionar, em cima da class, as anotações:
