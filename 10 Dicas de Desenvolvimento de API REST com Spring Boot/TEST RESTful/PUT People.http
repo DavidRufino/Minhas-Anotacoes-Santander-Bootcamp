@@ -1,17 +1,17 @@
-PUT http://localhost:8080/api/v1/people/130
+PUT http://localhost:8080/api/v1/people/34
 Content-Type: application/json
 
 {
-  "id": 130,
-  "firstName": "Rodrigo",
-  "lastName": "Mercules 2",
-  "cpf": "588.470.900-59",
-  "birthDate": "11-11-2019",
-  "phones": [
-    {
-      "id": 129,
-      "type": "MOBILE",
-      "number": "(21)99999999"
-    }
-  ]
-}
+    "id": 34,
+    "firstName": "David",
+    "lastName": "Rufino 2",
+    "cpf": "657.396.090-46",
+    "birthDate": null,
+    "phones": [
+      {
+        "id": 33,
+        "type": "MOBILE",
+        "number": "(021)9999-9999"
+      }
+    ]
+  }

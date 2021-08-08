@@ -201,6 +201,64 @@ implementation group: 'org.hibernate', name: 'hibernate-validator', version: '7.
 
 
 
+# Teste Unitário ou de unidade
+
+É uma técnica de teste de software por meio da qual unidades individuais de software, ou seja, grupo de módulos de programa de computador, procedimentos de uso e procedimentos operacionais são testados para determinar se são adequados para uso ou não. É um método de teste em que **todos os módulos independentes são testados** para determinar se há algum problema pelo próprio desenvolvedor. Está correlacionado com a correção funcional dos módulos independentes.
+
+O **Teste de Unidade** é definido como um tipo de teste de software em que os componentes individuais de um software são testados.
+O teste de unidade do produto de software é realizado durante o desenvolvimento de um aplicativo. Um componente individual pode ser uma função individual ou um procedimento. O Teste de Unidade normalmente é executado pelo desenvolvedor.
+
+### Objetivo do Teste de Unidade:
+
+O objetivo do **Teste de Unidade** é:
+
+1. Para isolar uma seção do código.
+2. Para verificar a exatidão do código.
+3. Para testar todas as funções e procedimentos.
+4. Para corrigir o bug no início do ciclo de desenvolvimento e para economizar custos.
+5. Para ajudar os desenvolvedores a entender a base do código e permitir que façam alterações rapidamente.
+6. Para ajudar na reutilização do código.
+
+<img src="img/20210808134904.jpg" alt="d" style="zoom:30%;" />
+
+**Ferramentas de teste de unidade:**
+Aqui estão algumas ferramentas de teste de unidade comumente usadas:
+
+1. **JTest** - É um produto automatizado de teste e análise estática de software Java, fabricado pela Parasoft.
+2. **JUnit** - É um *framework open-source*, que se assemelha ao raio de testes software **Java**, criado por Erich Gamma e Kent Beck, com suporte à criação de testes automatizados na linguagem de programação Java.
+3. **NUnit** - É uma estrutura de teste de unidade para todas as linguagens .Net.
+4. **PHPUnit** - É um *framework* de teste de unidade para a linguagem de programação PHP criado por Sebastian Bergmann. O *framework* faz parte da família **XUnit**, iniciada com o **SUnit**, e similar ao **JUnit**.
+
+**Vantagens do teste de unidade:**
+
+- O Teste de Unidade permite que os desenvolvedores aprendam qual funcionalidade é fornecida por uma unidade e como usá-la para obter uma compreensão básica da API da unidade.
+- O teste de unidade permite que o programador refine o código e verifique se o módulo funciona corretamente.
+- O teste de unidade permite testar partes do projeto sem esperar que outras sejam concluídas.
+
+#### JUnit no Gradle
+
+adicionar no arquivo: **build.gradle**
+
+```
+test {
+	useJUnitPlatform()
+}
+```
+
+
+
+## Teste JUnit com Mockito
+
+Algumas **anotações e method da biblioteca Mockito**
+
+- `@ExtendWith` - usada para registrar extensões para a classe de teste anotada ou método de teste. exemplo: `@ExtendWith(MockitoExtension.class)`.
+- `@Mock` - É usado para **simular os objetos** que ajuda a minimizar os objetos simulados repetitivos. Isso torna o código de teste e o erro de verificação mais fáceis de ler, pois os nomes dos parâmetros (nomes dos campos) são usados para identificar os **mocks**.
+- `@InjectMocks` - Marca um campo ou parâmetro no qual a injeção deve ser realizada. Ele permite a simulação abreviada e as injeções de espionagem e minimiza as simulações repetitivas e as injeções de espionagem. No **Mockito**, os **mocks** são injetados por injeção de setter, injeção de construtor e injeção de propriedade.
+- `@Test` - Informa ao **JUnit** que o `public void` método ao qual está anexado pode ser executado como um caso de teste.
+- **Mockito.when()** - Ele ativa métodos de stub. Deve ser usado quando queremos simular para retornar valores específicos quando métodos específicos são chamados. Exemplo: `When the XYZ() method is called, then return ABC`.
+
+
+
 # Referências
 
 RedHat. **REST x SOAP** - https://www.redhat.com/pt-br/topics/integration/whats-the-difference-between-soap-rest
@@ -212,3 +270,9 @@ GeekHunter. **Heroku: o que é e como funciona** - https://blog.geekhunter.com.b
 StackExchange por Flater. **What is the use of DTO instead of Entity?** - https://softwareengineering.stackexchange.com/questions/373284/what-is-the-use-of-dto-instead-of-entity?answertab=oldest#tab-top
 
 Docs Oracle. **Using Bean Validation** - https://docs.oracle.com/javaee/6/tutorial/doc/gircz.html
+
+GeeksforGeeks. **Unit Testing | Software Testing** - https://www.geeksforgeeks.org/unit-testing-software-testing/
+
+Baeldung. **Getting Started with Mockito @Mock, @Spy, @Captor and @InjectMocks** - https://www.baeldung.com/mockito-annotations
+
+Javatpoint. **Mockito Annotations** - https://www.javatpoint.com/mockito-annotations

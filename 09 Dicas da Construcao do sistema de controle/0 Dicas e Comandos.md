@@ -8,6 +8,7 @@ O plug-in **[Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)** facilit
 - `@Getter` -  Permite que o **Lombok** gere o Getter padrão automaticamente
 - `@Setter` - Permite que o **Lombok** gere o Setter padrão automaticamente
 - `@AllArgsConstructor` - Gera construtores que aceitam argumentos
+  - `@AllArgsConstructor(onConstructor = @__(@Autowired))` - colocará as anotações listadas no construtor gerado. O sublinhado duplo foi introduzido por causa dos problemas de compatibilidade com versões anteriores. De acordo com a documentação.
 - `@NoArgsConstructor` -  Gera construtores que não aceitam argumentos
 - `@EqualsAndHashCode` - Gera `hashCode`e `equals` que implementa a partir dos campos do seu objeto.
 - `@Builder` - permite que você produza automaticamente o código necessário para que sua classe seja instanciada com códigos como:`Person.builder().name("Adam Savage").city("San Francisco").job("Mythbusters").job("Unchained Reaction").build();`
@@ -233,3 +234,5 @@ Docs Oracle. **Enum CascadeType** - https://docs.oracle.com/javaee/6/api/javax/p
 Dev Media. **Cascade Hibernate: Conhecendo diferentes tipos** - https://www.devmedia.com.br/cascade-hibernate-conhecendo-diferentes-tipos/28892
 
 StackOverflow. **Qual a diferença entre DAO e Repository?** - https://pt.stackoverflow.com/questions/12927/qual-a-diferen%C3%A7a-entre-dao-e-repository
+
+Baeldung. **Constructor Injection in Spring with Lombok** - https://www.baeldung.com/spring-injection-lombok
