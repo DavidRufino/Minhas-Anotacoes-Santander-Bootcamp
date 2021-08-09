@@ -30,3 +30,4 @@ Sinta-se à vontade em agregar as a anotações também.
 
 **[Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/10%20Dicas%20de%20Desenvolvimento%20de%20API%20REST%20com%20Spring%20Boot)** apresentado pelo **Rodrigo Peleias**
 
+Construindo um projeto com arquitetura baseada em micro serviços usando Spring Cloud apresentado pelo **Oswaldo Mauricio Neto**

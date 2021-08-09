@@ -4,12 +4,12 @@ Content-Type: application/json
 {
     "firstName": "Rodrigo",
     "lastName": "Mercules",
-    "cpf": "588.470.900-59",
+    "cpf": "311.929.960-03",
     "birthDate": "11-11-2019",
     "phones": [
         {
             "type": "MOBILE",
-            "number": "(21)99999999"
+            "number": "(021)9999-9999"
         }
     ]
 }

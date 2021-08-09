@@ -94,7 +94,7 @@ O **CascadeType** define o conjunto de operações em cascata que são propagada
 
 
 
-## Spring Framework MVC
+## Spring Framework
 
 - `@RestController` - É para marcar que o controlador está fornecendo serviços REST com o tipo de resposta JSON. Esta anotação é uma versão especializada de `@Controller` que adiciona as anotações `@Controller` e `@ResponseBody` automaticamente;
 
@@ -111,6 +111,17 @@ O **CascadeType** define o conjunto de operações em cascata que são propagada
 - `@Repository` - é uma especialização da `@Component`anotação que indica que uma classe anotada é um "Repositório", que pode ser usado como um mecanismo para encapsular o armazenamento, recuperação e comportamento de pesquisa que emula uma coleção de objetos.
 
 - **ResponseEntity<T>** - Representa toda a **resposta HTTP**: código de status (**STATUS CODE**), cabeçalhos (**HEAD**) e corpo (**BODY**). Como resultado (**ResponseEntity.ok()**), podemos usá-lo para configurar totalmente a resposta HTTP.
+
+- `@Configuration` - Indica que a classe declara um ou mais `@Bean` métodos e pode ser processada pelo  **Spring container** para gerar definições de bean e solicitações de serviço para esses beans em tempo de execução.
+
+- `@EnableElasticsearchRepositories` - Anotação para habilitar repositórios **Elasticsearch**. Irá varrer o pacote da classe de configuração anotada para repositórios Spring Data por padrão.
+
+  - `basePackages = "{PACKAGE}"` - É um pacote ou uma matriz de pacotes para varrer o **{PACKAGE}** informado.
+
+- `@Document` - Esta anotação marca uma classe como sendo um objeto de domínio que desejamos persistir no banco de dados.
+
+  - `indexName` - O nome do índice para armazenar esta entidade. Pode conter uma expressão de modelo SpEL como `"log-#{T(java.time.LocalDate).now().toString()}"`
+  - `type` - o tipo de mapeamento. Se não for definido, o nome simples em minúsculas da classe será usado. **(obsoleto desde a versão 4.0)**
 
 
 
@@ -130,11 +141,11 @@ Nomes recomendados para as Package/Pastas:
 - **util** - utility classes;
 - **validation** - validators classes;
 - **bootloader** - main class;
-- **repository** - repository class;
+- **repository** - repository class; São os **Entity Manager**, ou Gerenciador de entidade, gerencia os objetos produtos. São eles quem criara, atualizara ou removera um produto.
 - **enums** - package contendo os enum;
 - **dto** - package DTO (**Data Transfer Object**) é a implementação do pacote Data Parse Object, que é justamente objetos para fazer a transferência de dados, sera responsavel por receber todo os dados
-  - subfolder: **request**
-  - subfolder: **response**
+  - **request**
+  - **response**
 
 - **swagger** - Fornece ferramentas para: auxiliar na definição do arquivo de configuração (**Swagger** Editor), interagir com API através das definições do arquivo de configuração (**Swagger** UI) e gerar templates de código a partir do arquivo de configuração (**Swagger** Codegen).
 
@@ -236,3 +247,5 @@ Dev Media. **Cascade Hibernate: Conhecendo diferentes tipos** - https://www.devm
 StackOverflow. **Qual a diferença entre DAO e Repository?** - https://pt.stackoverflow.com/questions/12927/qual-a-diferen%C3%A7a-entre-dao-e-repository
 
 Baeldung. **Constructor Injection in Spring with Lombok** - https://www.baeldung.com/spring-injection-lombok
+
+Docs Spring. **Mapping Annotation Overview** - https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#reference

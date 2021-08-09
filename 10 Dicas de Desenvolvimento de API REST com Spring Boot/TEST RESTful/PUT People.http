@@ -1,15 +1,15 @@
-PUT http://localhost:8080/api/v1/people/34
+PUT http://localhost:8080/api/v1/people/162
 Content-Type: application/json
 
 {
-    "id": 34,
+    "id": 162,
     "firstName": "David",
     "lastName": "Rufino 2",
-    "cpf": "657.396.090-46",
-    "birthDate": null,
+    "cpf": "873.649.170-55",
+    "birthDate": "11-11-2019",
     "phones": [
       {
-        "id": 33,
+        "id": 161,
         "type": "MOBILE",
         "number": "(021)9999-9999"
       }
