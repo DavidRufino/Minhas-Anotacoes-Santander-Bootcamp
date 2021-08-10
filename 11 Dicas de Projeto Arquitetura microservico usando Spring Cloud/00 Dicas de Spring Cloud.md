@@ -81,6 +81,45 @@ Anotações **[Spring Framework Redis](https://docs.spring.io/spring-data/redis/
 
 
 
+# Arquivo de formato .yaml
+
+A **estrutura hierárquica do YAML** fornece maneiras de reduzir os níveis superiores do arquivo de propriedades de configuração, exemplo:
+
+```
+component:
+  idm:
+    url: myurl
+    user: user
+    password: password
+    description: >
+      this should be a long 
+      description
+  service:
+    url: myurlservice
+    token: token
+    description: >
+      this should be another long 
+      description
+```
+
+A mesma configuração se tornaria redundante usando o arquivo de **.properties** :
+
+```
+component.idm.url=myurl
+component.idm.user=user
+component.idm.password=password
+component.idm.description=this should be a long \
+                          description
+component.service.url=myurlservice
+component.service.token=token
+component.service.description=this should be another long \ 
+                              description
+```
+
+**A natureza hierárquica do YAML aumenta muito a legibilidade** . Não se trata apenas de evitar repetições, mas também do recuo, bem utilizado, **descreve perfeitamente** do que se trata e para que serve a configuração. Com **YAML**, como no caso do arquivo de propriedades com barra invertida \, é possível quebrar o conteúdo em várias linhas com o caractere *>* 
+
+
+
 # Spring Cloud
 
 Permite armazenar configurações de aplicações de **modo centralizado** fora da aplicação (por ex, em um repositório que centralize todas as configurações de todos os microsserviços).
@@ -93,7 +132,9 @@ O **Spring Cloud** pode ser utilizado tanto em **IaaS** quanto em **PaaS**. Nest
 
 ### Spring Cloud Config
 
-O **Spring Cloud Config** fornece suporte do lado do servidor e do cliente para configuração externa lizada em um sistema distribuído. Com o **Config Server**, você tem um local central para **gerenciar propriedades externas** para aplicativos em todos os ambientes.
+O **[Spring Cloud Config](https://spring.io/projects/spring-cloud-config)** fornece suporte do lado do servidor e do cliente para configuração externa ligada em um sistema distribuído. 
+
+**Config Server** é o serviço da arquitetura de micros serviços, responsável por entregar configurações para os micros serviços. Com o **Config Server**, você tem um local central para **gerenciar propriedades externas** para aplicativos em todos os ambientes. 
 
 Para fazer o **gerenciamento das configurações** fora do projeto, o armazenamento dos arquivos de configuração podem ser feitos de três formas: 
 
@@ -107,7 +148,7 @@ Para fazer o **gerenciamento das configurações** fora do projeto, o armazename
 
 # Service Discovery
 
-Permite que outros serviços "descubram" facilmente a rota dos serviços que precisam acessar
+Permite que outros serviços "descubram" facilmente a rota dos serviços que precisam acessar.
 Mais conhecidos do **Spring Cloud**:
 
 - [Spring Cloud Netflix Eureka](https://spring.io/projects/spring-cloud-netflix)
@@ -127,17 +168,20 @@ Também conhecido como **Discovery Server**. O **Eureka Server** é um serviço 
 
 # Gateway
 
-Tem o papel de ser um intermediário nas requisições para outros serviços.
-Mais conhecidos do Spring Cloud:
+Tem como papel de ser um intermediário nas requisições para outros serviços, de fornecer uma maneira simples, mas eficaz de direcionar para APIs e fornecer questões transversais a elas, como: segurança, monitoramento, métricas e resiliência.
+
+Bibliotecas mais conhecidas do Spring Cloud:
 
 - [Spring Cloud Gateway](https://spring.io/projects/spring-cloud-gateway)
 - [Zuul](https://spring.io/guides/gs/routing-and-filtering/)
 
-O **Gateway de API** é uma ferramenta de gerenciamento de APIs que fica entre o cliente e uma coleção de serviços de back-end. Um serviço de API aceita uma solicitação remota e retorna uma resposta. Mas na vida real nada é tão simples. Pense nas várias preocupações que você tem ao hospedar APIs em grande escala.
+O **Gateway de API** é uma ferramenta de gerenciamento de APIs que fica entre o cliente e uma coleção de serviços de back-end. Ela ajuda a **"expor"** o back-end. 
 
-- Você quer proteger suas APIs da utilização excessiva e de abusos, e por isso usa um serviço de autenticação e limitação de taxa. 
+Um serviço de API aceita uma solicitação remota e retorna uma resposta. Pense nas várias preocupações que você tem ao hospedar APIs em grande escala.
+
+- Um gateway de API separa APIs públicas externas das APIs de microsserviço interno, permitindo que os microsserviços sejam adicionados e os limites alterados. 
+- Os gateways de API ajudam a impedir ataques maliciosos, fornecendo uma camada adicional de proteção contra vetores de ataque, como injeção de [SQL](https://www.zup.com.br/blog/processar-dados-apache-kafka-ksql), explorações do Analisador de XML e ataques de negação de serviço (DoS).
 - Você quer entender como as pessoas usam suas APIs, então inclui ferramentas de monitoramento e análise.
-- Se você tem APIs monetizadas, será preciso conectar-se a um sistema de faturamento.
 - Se tiver adotado uma arquitetura de microsserviços, uma única solicitação pode exigir chamadas para dezenas de aplicações distintas.
 - Com o tempo, você incluirá novos serviços de API e descontinuará outros, mas seus clientes ainda vão querer encontrar todos os seus serviços no mesmo lugar.
 
@@ -164,3 +208,5 @@ RedHat. **Qual é a função de um gateway de API?** - https://www.redhat.com/pt
 DevMedia. **O que é Elasticsearch?** - https://www.devmedia.com.br/o-que-e-elasticsearch/40207
 
 Desenvolvedor. **Redis – o que é e para que serve?** - http://desenvolvedor.ninja/redis-o-que-e-e-para-que-serve/
+
+Baeldung. **Spring YAML vs Propriedades** - https://www.baeldung.com/spring-yaml-vs-properties

@@ -1,4 +1,4 @@
-POST http://localhost:8082/api/v1/cart/123
+POST http://localhost:8082/cart/123
 Content-Type: application/json
 
 {
