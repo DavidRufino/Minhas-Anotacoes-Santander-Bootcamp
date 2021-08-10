@@ -1,0 +1,8 @@
+POST http://localhost:8081/api/v1/product
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "TV Smart",
+    "amount": 12
+}

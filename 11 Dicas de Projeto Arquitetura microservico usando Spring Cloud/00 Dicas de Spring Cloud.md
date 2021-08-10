@@ -39,6 +39,48 @@ Em uma arquitetura de **microsserviços**, toda a funcionalidade é **dividida e
 
 
 
+# Spring Boot Actuator
+
+É uma biblioteca do próprio **Spring** para coletar **métricas, entender o trafego e o estado da aplicação**. Com ela podemos observar e monitorar o comportamento de uma aplicação em produção.
+
+Os *endpoints* do **Actuator** é que vão permitir o monitoramento da aplicação, fornecendo informações tais como: health-check, coleta de métricas, http trace, podemos ser acessados pelo url: 
+`http://localhost:[PORTA]/actuator`
+
+O **Health** Mostra o status da aplicação, que será UP se a aplicação estiver integra e DOWN caso não esteja saudável devido a qualquer problema, podemos acessar pela url:
+`http://localhost:[PORTA]/actuator/health`
+
+
+
+# Spring Data Elasticsearch
+
+É uma poderosa ferramenta para realização de buscas e análise de dados construída para trabalhar com grandes volumes de dados, permitindo indexar documentos e realizar buscas nesses documentos em (quase) tempo real.
+
+O Elasticsearch realiza buscas por Índice Invertido e esse princípio trabalha da seguinte forma:
+
+- No momento em que um documento é indexado, o Elasticsearch separa todos os seus termos em Tokens.
+- Em seguida ele faz uma medição para definir quais tokens são relevantes, eliminando assim artigos, preposições, etc.
+- O **próximo passo do Elasticsearch** é organizar os tokens em um índice e informar em cada token quais documentos contém esse token.
+- Quando uma busca for feita ela agirá sobre esse índice invertido ao invés de vasculhar cada documento individualmente, procurando pelos termos buscados.
+
+Anotações **[Spring Framework Elasticsearch](https://docs.spring.io/spring-data/elasticsearch/docs/current/api/org/springframework/data/elasticsearch/repository/config/EnableElasticsearchRepositories.html)**:
+
+- `@EnableElasticsearchRepositories` - Anotação para habilitar repositórios **Elasticsearch**. Irá varrer o pacote da classe de configuração anotada para repositórios Spring Data por padrão.
+  - `basePackages = "{PACKAGE}"` - É um pacote ou uma matriz de pacotes para varrer o **{PACKAGE}** informado.
+
+
+
+# Redis
+
+Redis (REmote DIctionary Server), os dados são armazenados na forma de chave-valor, lembrando a estrutura do **Dictionary** do .NET e do **Map** do Java. Um ponto importante que vale chamar a atenção aqui, é que o valor utilizado como chave no Redis pode possuir diferentes formatos, podendo ser **Strings, Hashes, Lists, Sets e Sets ordenados**.
+
+O **Redis** é extremamente rápido, tanto para escrita como para leitura dos dados, graças ao fato de armazenar seus dados em memória. Apesar disso, o Redis permite que os dados sejam persistidos fisicamente caso desejado. Os principais casos de uso do Redis incluem cache, gerenciamento de sessões, PUB/SUB e classificações.
+
+Anotações **[Spring Framework Redis](https://docs.spring.io/spring-data/redis/docs/current/api/org/springframework/data/redis/repository/configuration/EnableRedisRepositories.html)**:
+
+- `@EnableRedisRepositories` - Ativa os repositórios Redis;
+
+
+
 # Spring Cloud
 
 Permite armazenar configurações de aplicações de **modo centralizado** fora da aplicação (por ex, em um repositório que centralize todas as configurações de todos os microsserviços).
@@ -118,3 +160,7 @@ Medium. **Padrões de Microserviços — Service discovery — Eureka** - https:
 WoMakersCode. **Microsserviços com Spring Cloud: Introdução** - https://dev.to/womakerscode/microsservicos-com-spring-cloud-introducao-3cn6
 
 RedHat. **Qual é a função de um gateway de API?** - https://www.redhat.com/pt-br/topics/api/what-does-an-api-gateway-do
+
+DevMedia. **O que é Elasticsearch?** - https://www.devmedia.com.br/o-que-e-elasticsearch/40207
+
+Desenvolvedor. **Redis – o que é e para que serve?** - http://desenvolvedor.ninja/redis-o-que-e-e-para-que-serve/

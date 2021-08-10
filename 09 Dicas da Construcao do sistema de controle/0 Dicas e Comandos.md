@@ -114,10 +114,6 @@ O **CascadeType** define o conjunto de operações em cascata que são propagada
 
 - `@Configuration` - Indica que a classe declara um ou mais `@Bean` métodos e pode ser processada pelo  **Spring container** para gerar definições de bean e solicitações de serviço para esses beans em tempo de execução.
 
-- `@EnableElasticsearchRepositories` - Anotação para habilitar repositórios **Elasticsearch**. Irá varrer o pacote da classe de configuração anotada para repositórios Spring Data por padrão.
-
-  - `basePackages = "{PACKAGE}"` - É um pacote ou uma matriz de pacotes para varrer o **{PACKAGE}** informado.
-
 - `@Document` - Esta anotação marca uma classe como sendo um objeto de domínio que desejamos persistir no banco de dados.
 
   - `indexName` - O nome do índice para armazenar esta entidade. Pode conter uma expressão de modelo SpEL como `"log-#{T(java.time.LocalDate).now().toString()}"`
