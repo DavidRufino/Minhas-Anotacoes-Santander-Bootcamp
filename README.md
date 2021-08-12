@@ -31,3 +31,8 @@ Sinta-se à vontade em agregar as a anotações também.
 **[Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/10%20Dicas%20de%20Desenvolvimento%20de%20API%20REST%20com%20Spring%20Boot)** apresentado pelo **Rodrigo Peleias**
 
 **[Construindo um projeto com arquitetura baseada em micro serviços usando Spring Cloud](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/11%20Dicas%20de%20Projeto%20Arquitetura%20microservico%20usando%20Spring%20Cloud)** apresentado pelo **Oswaldo Mauricio Neto**
+
+**Introdução a criação de Websites com HTML5 e CSS3** apresentado pelo **Lucas Vilaboim**
+
+**Introdução ao Angular 8** apresentado pelo **Wesllhey Holanda**
+
