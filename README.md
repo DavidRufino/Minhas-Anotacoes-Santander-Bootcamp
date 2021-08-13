@@ -36,3 +36,5 @@ Sinta-se à vontade em agregar as a anotações também.
 
 **[Introdução ao Angular 8](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/13%20Introdu%C3%A7%C3%A3o%20ao%20Angular%208)** apresentado pelo **Wesllhey Holanda**
 
+**Técnicas avançadas em Angular 8** apresentado pelo **Renan Rafael Bertoldo**
+

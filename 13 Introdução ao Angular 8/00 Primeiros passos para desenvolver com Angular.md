@@ -356,6 +356,7 @@ export class AppModule { }
   - **declarations** - São para disponibilizar diretivas (incluindo componentes e tubos) do módulo atual para outras diretivas no módulo atual. Os seletores de diretivas, componentes ou canais só são comparados com o HTML se forem declarados ou importados;
   - **imports** - Torna as declarações exportadas de outros módulos disponíveis no módulo atual;
   - **providers** - São para tornar serviços e valores conhecidos para DI (injeção de dependência). Eles são adicionados ao escopo raiz e injetados em outros serviços ou diretivas que os possuem como dependência.
+  - **exports** - O conjunto de componentes, diretivas e canais declarados neste **NgModule-exports** podem ser usados **no modelo de qualquer componente** que faça parte de um **NgModule-imports**  deste NgModule
 
 
 
