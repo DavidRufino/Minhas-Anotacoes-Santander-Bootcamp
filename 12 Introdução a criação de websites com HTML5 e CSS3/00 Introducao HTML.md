@@ -78,11 +78,11 @@ Com esses elementos podemos **agrupar tipos de conteúdo, alterar tamanho e form
 </html>
 ```
 
-- HEAD**ER** - Não confunda com **HEAD**. Representa o conteúdo introdutório, normalmente um grupo de auxílios introdutórios ou de navegação. Ele pode conter alguns elementos de título, mas também um logotipo, um formulário de pesquisa, um nome de autor e outros elementos.
-- `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>` - Representam seis níveis de cabeçalhos de seção. <h1> é o nível de seção mais alto, enquanto <h6> o mais baixo
-- `SECTION` - Representa uma seção autônoma genérica de um documento, que não possui um elemento semântico mais específico para representá-lo. As seções devem sempre ter um título, com muito poucas exceções.
-- `ARTICLE` - Representa uma composição independente em um documento, página, aplicativo ou site, que se destina a ser distribuído ou reutilizado de forma independente
-- `FOOTER` - Representa um rodapé para seu conteúdo de seção mais próximo ou elemento raiz de seção . Normalmente, um contém informações sobre o autor da seção, dados de direitos autorais ou links para documentos relacionados.
+- HEAD**ER** - Não confunda com **HEAD**. Representa o conteúdo introdutório, normalmente um grupo de auxílios introdutórios ou de navegação. Ele pode conter alguns elementos de título, mas também um logotipo, um formulário de pesquisa, um nome de autor e outros elementos;
+- `<h1>, <h2>, <h3>, <h4>, <h5>, <h6>` - Representam seis níveis de cabeçalhos de seção. `<h1>` é o nível de seção mais alto, enquanto `<h6>` o mais baixo;
+- `SECTION` - Representa uma seção autônoma genérica de um documento, que não possui um elemento semântico mais específico para representá-lo. As seções devem sempre ter um título, com muito poucas exceções;
+- `ARTICLE` - Representa uma composição independente em um documento, página, aplicativo ou site, que se destina a ser distribuído ou reutilizado de forma independente;
+- `FOOTER` - Representa um rodapé para seu conteúdo de seção mais próximo ou elemento raiz de seção . Normalmente, um contém informações sobre o autor da seção, dados de direitos autorais ou links para documentos relacionados;
 
 
 

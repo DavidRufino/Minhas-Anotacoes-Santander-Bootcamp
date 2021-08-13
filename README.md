@@ -32,7 +32,7 @@ Sinta-se à vontade em agregar as a anotações também.
 
 **[Construindo um projeto com arquitetura baseada em micro serviços usando Spring Cloud](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/11%20Dicas%20de%20Projeto%20Arquitetura%20microservico%20usando%20Spring%20Cloud)** apresentado pelo **Oswaldo Mauricio Neto**
 
-**Introdução a criação de Websites com HTML5 e CSS3** apresentado pelo **Lucas Vilaboim**
+**[Introdução a criação de Websites com HTML5 e CSS3](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/12%20Introdu%C3%A7%C3%A3o%20a%20cria%C3%A7%C3%A3o%20de%20websites%20com%20HTML5%20e%20CSS3)** apresentado pelo **Lucas Vilaboim**
 
-**Introdução ao Angular 8** apresentado pelo **Wesllhey Holanda**
+**[Introdução ao Angular 8](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/13%20Introdu%C3%A7%C3%A3o%20ao%20Angular%208)** apresentado pelo **Wesllhey Holanda**
 
