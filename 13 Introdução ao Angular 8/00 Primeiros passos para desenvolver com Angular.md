@@ -38,11 +38,38 @@ O **Angular CLI** é baseado no [**Webpack**](https://webpack.js.org/), uma ferr
 
 
 
-Com o **node.js** instalado, no terminal digite: 
+Com o **node.js** instalado, no *Terminal* digite: 
 
 - `npm install -g @angular/cli`  - Instala o Angular CLI usando o `npm` gerenciador de pacotes de forma **Global**;
 
 - `ng -v` - Informa a versão instalada do Angular CLI .
+
+- [`ng g [SUB-COMANDO] [NOME-DO-ARQUIVO]`](https://angular.io/cli/generate) - Gera (**g** de **g**enerate) um arquivo via *Terminal*; Para adicionar pastas no comando, apenas digite em **[NOME-DO-ARQUIVO]**. Todo o '*caminho*' para chegar a este **novo arquivo**. Exp: `features\create\[NOME-DO-ARQUIVO]`.
+  Seguintes **SUB-COMANDO**:
+
+  - `app-shell` 
+
+  - `application` 
+  - `class` 
+  - `component` 
+  - `directive` 
+  - `enum` 
+  - `guard` 
+  - `interceptor` 
+  - `interface`
+  - `library`
+  - `module`
+  - `pipe`
+  - `resolver`
+  - `service`
+  - `service-worker`
+  - `web-worker`
+
+```
+// Exemplo final
+ng g module features\create\teste
+//	É GERADO: features\create\teste.module.ts
+```
 
 
 

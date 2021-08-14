@@ -1,0 +1,77 @@
+# Gerenciamento de Estado
+
+
+
+## O que são Services
+
+Service é o **objeto usado para organizar e/ou compartilhar estados de objetos e as regras de negócio da aplicação**. Ele é **singleton**, ou seja, há apenas uma instância disponível durante a vida útil da aplicação. Outra característica importante é a inicialização tardia (**lazily instantiated**), que só é efetuada quando o Angular identifica que tem algum componente dependente.
+
+Opa, espera aí! **O *Controller* não é o lugar de controle da view?** Logo, **não é nele que eu tenho que ter as regras de negócio?** Sim, o **Controller** de fato controla a camada de visão, porém, **não é ele que armazena as regras que são compartilhadas na aplicação**. O **Controller** gerencia **APENAS as regras referentes a VIEW** a qual está associado.  Vou enumerar porquê as regras devem ir para um **SERVICE**:
+
+1. O **Controller** é criado sempre que acessamos a *VIEW* que o tem como dependência e **é destruído assim que essa dependência não é mais necessária**, por *exemplo*, quando há mudança na rota e a *VIEW* é substituída por uma nova. Então, quando queremos que o estado do objeto tenha o lifecycle independente da camada de visão, usamos **SERVICE** por ser **singleton;**
+2. Através da injeção de dependência do Angular, o *service* pode ser utilizado por toda a aplicação. O controlador tem a limitação de não ser instanciado pelo *provider*, o serviço ***$controller*** é o responsável por inicia-lo. **[Aqui](https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection)** você tem mais detalhes sobre a injeção de dependência do Angula, **recomendo a leitura**;
+3. O **Angular** dispõe de uma vasta opção de **SERVICES**, por exemplo o [$http](https://docs.angularjs.org/api/ng/service/$http), para facilitar a comunicação remota. Além disso, é muito fácil criar o nosso próprio serviço;
+4. A centralização das regras em um service **facilita na Manutenibilidade e testabilidade do código**.
+
+
+
+## Desenvolvendo State Management com NGRX
+
+Com o **Angular**, projetar e desenvolver a **Camada VIEW** de nosso aplicativo é mais simples do que nunca.
+
+Mas a **camada de Service** (também conhecida como camada de dados), que é realmente o **coração funcional do aplicativo**.
+
+
+
+### ngRx
+
+É um conjunto de *bibliotecas* criado especificamente para **Gerenciar Estados em Aplicações *Angular*** totalmente baseado em **RxJS**. Ele torna o desenvolvimento Angular mais fácil, simplificando o estado do aplicativo em objetos e reforçando o fluxo de dados unidirecional.
+
+Fortemente inspirada pelo **Redux** original, ela compartilha dos mesmos conceitos fundamentais de arquitetura como **stores**, **actions** e **reducers**. [NGRX DOC](https://ngrx.io/guide/store)
+
+<img src="img/20210814170255.png" width="70%;" />
+
+Um **Sistema de Gerenciamento de Estado** completo deve permitir que você modele um estado - por exemplo, crie uma representação simples de como o estado deve ser, atualize seu valor, monitore o estado quando o valor muda e recupere os valores do estado.
+
+As bibliotecas incluídas no pacote **NgRx** incluem:
+
+- [Store](https://ngrx.io/guide/store)
+- [Effects](https://ngrx.io/guide/effects)
+- [Entity](https://ngrx.io/guide/entity)
+- [ComponentStore](https://ngrx.io/guide/component-store)
+- [Router Store](https://ngrx.io/guide/router-store)
+
+
+
+### NgRx Store
+
+É um **Sistema de Gerenciamento de Estado** inspirado no **Redux **que permite usar **Observables** para gerenciar o estado em um aplicativo Angular. A principal vantagem de usar o **NgRx Store** é a capacidade de **Armazenar todos os Estados em uma Única Árvore** que pode ser acessada de **qualquer parte do aplicativo**.
+
+
+
+### Aplicativo Angular simples usando NgRx
+
+1. Instalando o Angular CLI: `npm install -g @angular/cli`
+2. Criando um novo projeto Angular, no local especificado no **Terminal**: `ng new [NOME-DO-PROJETO]`
+3. Com o projeto Angular criado, abra o diretório do projeto pelo **Terminal**: `dir` e `cd [NOME-DO-PROJETO]`
+4. Instalando o [NgRx Store](https://ngrx.io/guide/store/install):  `ng add @ngrx/store@latest`
+5. Instalando o [NgRx Store](https://ngrx.io/guide/store-devtools/install) devtools:  `ng add @ngrx/store-devtools@latest`
+6. Instalando o [NgRx Effects](https://ngrx.io/guide/effects/install): `ng add @ngrx/effects@latest`
+
+
+
+
+
+
+
+# Referência
+
+Gabriel Feitosa. **AngularJS: Services** - https://gabrielfeitosa.com/angularjs-services/
+
+Angular University. **Angular Service Layers: Redux, RxJs and Ngrx Store - When to Use a Store And Why?** - https://blog.angular-university.io/angular-2-redux-ngrx-rxjs/
+
+Movile. **Construindo aplicações front-end reativas com NgRx** - https://movile.blog/construindo-aplicacoes-front-end-reativas-com-ngrx/
+
+LogRocket por Wisdom Ekpot **Angular state management made simple with NgRx** - https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/#managingstateinfrontendapplications
+
+LogRocket por Neo Ighodaro. **Why use Redux? A tutorial with examples** - https://blog.logrocket.com/why-use-redux-reasons-with-clear-examples-d21bffd5835/
