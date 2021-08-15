@@ -15,33 +15,19 @@ Opa, espera aí! **O *Controller* não é o lugar de controle da view?** Logo, *
 
 
 
-## Desenvolvendo State Management com NGRX
+## Desenvolvendo State Management com NgRx
 
 Com o **Angular**, projetar e desenvolver a **Camada VIEW** de nosso aplicativo é mais simples do que nunca.
 
 Mas a **camada de Service** (também conhecida como camada de dados), que é realmente o **coração funcional do aplicativo**.
 
-
+Um **Sistema de Gerenciamento de Estado** completo deve permitir que você modele um estado - por exemplo, crie uma representação simples de como o estado deve ser, atualize seu valor, monitore o estado quando o valor muda e recupere os valores do estado.
 
 ### NgRx
 
 É um conjunto de *bibliotecas* criado especificamente para **Gerenciar Estados em Aplicações *Angular*** totalmente baseado em **RxJS**. Ele torna o desenvolvimento Angular mais fácil, simplificando o estado do aplicativo em objetos e reforçando o fluxo de dados unidirecional.
 
 Fortemente inspirada pelo **Redux** original, ela compartilha dos mesmos conceitos fundamentais de arquitetura como **stores**, **actions** e **reducers**. [NGRX DOC](https://ngrx.io/guide/store)
-
-<img src="img/20210814170255.png" width="70%;" />
-
-> Tirando as setas do **SELECTOR** e **COMPONENT**. Elas **NÃO SÃO OBRIGATORIAS**. **ACTION** não necessariamente precisa cair em **REDUCER**. E o **EFFECTS** não necessariamente precisa retornar uma nova **ACTION**
-
-- **`STORE`** - Store, um gerenciamento de estado global, ela **centraliza a aplicação INTEIRA**; Basicamente é um **JSON GIGANTE** (dependendo da aplicação). A **STORE** armazenara o estado da aplicação exemplo: ira adicionar o usuário que esta logado, as listas que a aplicação possui, estado de loaders e etc. **STORE** é a "Fonte da Verdade", os componentes vão simplesmente 'refletir' o **estado** que esta na **STORE**. **Reduzindo as inconsistência** na aplicação;
-- **`COMPONENT`** - Ele se comunica com **STORE** através da **`ACTION`**; Um **`COMPONENT`** dispara uma **ACTION** e esta **`ACTION`** PODE acionar o REDUCER>STORE **MAS** ao mesmo tempo, a mesma **ACTION** também pode gerar um side **`EFFECTS`** ;
-- **`REDUCER`** - Ele calcula o estado atual da aplicação. Pega o estado atual da **STORE**, vai misturar com a **`ACTION`** que foi disparada e **vai gerar um novo Estado**;
-- **`SELECTOR`** - É utilizada para extrair "Pedaços" extraindo apenas o que é preciso (exp.: só a lista, só o usuário etc) da **STORE** e retornar um **Observable**, sendo possível dar **subscribe** e atualizar o **COMPONENT**. Toda vez que a **STORE** for modificada, o **COMPONENT** conseguira reagir a essas mudanças;
-- **`EFFECTS`** - É o responsável por fazer a **comunicação HTTP** ou se precisar fazer, por exemplo: mudar  o estado, consumir Cookies, local history ou precise combinar informação; Uma **REQUEST HTTP é asynchronous (assíncrona)**. Quando a **REQUEST HTTP** retornar, será preciso atualizar a **`STORE`**. Então os **EFFECTS** também podem, no final da execução, disparar uma nova **ACTION**. E esta **`ACTION`** NÃO vai para **`COMPONENT`**. ela vai direto para o **`REDUCER`** podendo então, modificar a **`STORE`**;
-
-
-
-Um **Sistema de Gerenciamento de Estado** completo deve permitir que você modele um estado - por exemplo, crie uma representação simples de como o estado deve ser, atualize seu valor, monitore o estado quando o valor muda e recupere os valores do estado.
 
 As bibliotecas incluídas no pacote **NgRx** incluem:
 
@@ -53,9 +39,31 @@ As bibliotecas incluídas no pacote **NgRx** incluem:
 
 
 
+<img src="img/20210814170255.png" width="70%;" />
+
+> Tirando as setas do **SELECTOR** e **COMPONENT**. Elas **NÃO SÃO OBRIGATORIAS**. **ACTION** não necessariamente precisa cair em **REDUCER**. E o **EFFECTS** não necessariamente precisa retornar uma nova **ACTION**
+
+- **`STORE`** - É um gerenciamento de estado **global**, ela **centraliza a aplicação INTEIRA**; Basicamente é um **JSON GIGANTE** (dependendo da aplicação). A **STORE** armazenara o estado da aplicação exemplo: ira adicionar o usuário que esta logado, as listas que a aplicação possui, estado de loaders e etc. **STORE** é a "Fonte da Verdade", os componentes vão simplesmente 'refletir' o **estado** que esta na **STORE**. **Reduzindo as inconsistência** na aplicação;
+- **`COMPONENT`** - Ele se comunica com **STORE** através da **`ACTION`**; Um **`COMPONENT`** dispara uma **ACTION** e esta **`ACTION`** PODE acionar o REDUCER>STORE **MAS** ao mesmo tempo, a mesma **ACTION** também pode gerar um side **`EFFECTS`** ;
+- **`REDUCER`** - Ele pega o estado atual da **STORE**, vai misturar com a **`ACTION`** que foi disparada e **vai gerar um novo Estado**;
+- **`SELECTOR`** - É utilizada para extrair "Pedaços" extraindo apenas o que é preciso (exp.: só a lista, só o usuário etc) da **STORE** e retornar um **Observable**, sendo possível dar **subscribe** e atualizar o **COMPONENT**. Toda vez que a **STORE** for modificada, o **COMPONENT** conseguira reagir a essas mudanças;
+- **`EFFECTS`** - É o responsável por fazer a **comunicação HTTP** ou se precisar fazer, por exemplo: mudar  o estado, consumir Cookies, local history ou precise combinar informação; Uma **REQUEST HTTP é asynchronous (assíncrona)**. Quando a **REQUEST HTTP** retornar, será preciso atualizar a **`STORE`**. Então os **EFFECTS** também podem, no final da execução, disparar uma nova **ACTION**. E esta **`ACTION`** NÃO vai para **`COMPONENT`**. ela vai direto para o **`REDUCER`** podendo então, modificar a **`STORE`**;
+
+
+
 ### NgRx Store
 
 É um **Sistema de Gerenciamento de Estado** inspirado no **Redux **que permite usar **Observables** para gerenciar o estado em um aplicativo Angular. A principal vantagem de usar o **NgRx Store** é a capacidade de **Armazenar todos os Estados em uma Única Árvore** que pode ser acessada de **qualquer parte do aplicativo**.
+
+### NgRx Effects
+
+Nos permitem ouvir tipos de ação específicos e "fazer algo" quando essa ação acontece. Qualquer efeito que você escrever também é uma **Observable**.
+
+Um **`EFFECTS`** é uma **Observable** que usa o Action Stream como sua fonte e também como seu destino. Ou seja, um efeito **Subscribes** para o Action Stream, e também pode **Publish** para o fluxo de ação.
+
+### NgRx Router Store
+
+Existe para que seja possível que a **STORE** seja a **fonte única da verdade** para o estado de roteamento de um aplicativo. Se um aplicativo usa rotas/navegação, o **roteamento ou router se torna uma parte essencial do estado do aplicativo**. **Router Store** servira para vincular o roteamento com a **NgRx Store**. Cada vez que o router mudar, uma ação será despachada e atualizará a **STORE** por meio de um **REDUCER**. 
 
 
 
@@ -71,7 +79,7 @@ As bibliotecas incluídas no pacote **NgRx** incluem:
 
 
 
-No **app.module.ts** , podemos ver que foram importados os Module:
+Em **app.module.ts** , podemos ver que foram importados os Module:
 
 ```
 ...
@@ -95,7 +103,17 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 - `StoreModule.forRoot` - ***NgRx Store***. Implementação completa de uma biblioteca para controle de estado em aplicações Angular totalmente **Redux-like** que utiliza extensões reativas (*RxJS*) em sua base;
 - `StoreDevtoolsModule.instrument` - ***NgRx Store devtools***. Serve para fazer a conexão com o estado da nossa aplicação, com a **extensão do Chrome [Redux DevTool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)**. É uma ferramenta que permite debugar em detalhes as mudanças de estado e que possui outros recursos interessantes, como navegar (voltar ou avançar) no tempo entre as mudanças ocorridas;
 - `EffectsModule.forRoot` -  ***NgRx Effects***. Biblioteca responsável por lidar com “efeitos colaterais” (*side-effects*) causados por *actions* que realizam tarefas assíncronas (como requisições http por ex.), isolando o tratamento desses efeitos de funções puras responsáveis somente por cuidar de mudanças de estado;
-- `StoreRouterConnectingModule.forRoot` - ***NgRx Router Store***. Serve para Conectar o Estado da Rota do Angular, e jogar essa informação dentro da **Store**;
+- `StoreRouterConnectingModule.forRoot` - ***NgRx Router Store***. Serve para Conectar o Estado da Rota do Angular, e jogar essa informação dentro da **`STORE`**;
+
+
+
+## Reducer
+
+É uma função pura. Será aonde se faz a **configuração do estado**. Criamos então em `src\app\state\` o arquivo **app.reducer.ts** contendo:
+
+```
+
+```
 
 
 
@@ -110,3 +128,10 @@ Movile. **Construindo aplicações front-end reativas com NgRx** - https://movil
 LogRocket por Wisdom Ekpot **Angular state management made simple with NgRx** - https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/#managingstateinfrontendapplications
 
 LogRocket por Neo Ighodaro. **Why use Redux? A tutorial with examples** - https://blog.logrocket.com/why-use-redux-reasons-with-clear-examples-d21bffd5835/
+
+Medium por Tanya Gray. **Understanding NgRx Effects and the Action Stream** - https://medium.com/@tanya/understanding-ngrx-effects-and-the-action-stream-1a74996a0c1c
+
+Dev por Salim Chemes. **How to implement ngrx-router-store** - https://dev.to/salimchemes/how-to-implement-ngrx-router-store-4552
+
+ti-enxame por cartant. **Entendendo a finalidade do projeto ngrx router-store em comparação com o uso somente do roteador angular 2** - https://www.ti-enxame.com/pt/ngrx/entendendo-finalidade-do-projeto-ngrx-router-store-em-comparacao-com-o-uso-somente-do-roteador-angular-2/830340005/
+
