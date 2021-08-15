@@ -4,7 +4,7 @@
 
 Repositório no GitHub contendo minhas anotações que estou fazendo dos cursos do Santander Fullstack Developer, servindo para futuras consultas.
 
-Sinta-se à vontade em agregar as a anotações também. 
+Sinta-se à vontade em agregar as anotações também. 
 
 .
 
