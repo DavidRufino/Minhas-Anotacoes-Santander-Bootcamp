@@ -31,6 +31,16 @@ Fortemente inspirada pelo **Redux** original, ela compartilha dos mesmos conceit
 
 <img src="img/20210814170255.png" width="70%;" />
 
+> Tirando as setas do **SELECTOR** e **COMPONENT**. Elas **NÃO SÃO OBRIGATORIAS**. **ACTION** não necessariamente precisa cair em **REDUCER**. E o **EFFECTS** não necessariamente precisa retornar uma nova **ACTION**
+
+- **`STORE`** - Store, um gerenciamento de estado global, ela **centraliza a aplicação INTEIRA**; Basicamente é um **JSON GIGANTE** (dependendo da aplicação). A **STORE** armazenara o estado da aplicação exemplo: ira adicionar o usuário que esta logado, as listas que a aplicação possui, estado de loaders e etc. **STORE** é a "Fonte da Verdade", os componentes vão simplesmente 'refletir' o **estado** que esta na **STORE**. **Reduzindo as inconsistência** na aplicação;
+- **`COMPONENT`** - Ele se comunica com **STORE** através da **`ACTION`**; Um **`COMPONENT`** dispara uma **ACTION** e esta **`ACTION`** PODE acionar o REDUCER>STORE **MAS** ao mesmo tempo, a mesma **ACTION** também pode gerar um side **`EFFECTS`** ;
+- **`REDUCER`** - Ele calcula o estado atual da aplicação. Pega o estado atual da **STORE**, vai misturar com a **`ACTION`** que foi disparada e **vai gerar um novo Estado**;
+- **`SELECTOR`** - É utilizada para extrair "Pedaços" extraindo apenas o que é preciso (exp.: só a lista, só o usuário etc) da **STORE** e retornar um **Observable**, sendo possível dar **subscribe** e atualizar o **COMPONENT**. Toda vez que a **STORE** for modificada, o **COMPONENT** conseguira reagir a essas mudanças;
+- **`EFFECTS`** - É o responsável por fazer a **comunicação HTTP** ou se precisar fazer, por exemplo: mudar  o estado, consumir Cookies, local history ou precise combinar informação; Uma **REQUEST HTTP é asynchronous (assíncrona)**. Quando a **REQUEST HTTP** retornar, será preciso atualizar a **`STORE`**. Então os **EFFECTS** também podem, no final da execução, disparar uma nova **ACTION**. E esta **`ACTION`** NÃO vai para **`COMPONENT`**. ela vai direto para o **`REDUCER`** podendo então, modificar a **`STORE`**;
+
+
+
 Um **Sistema de Gerenciamento de Estado** completo deve permitir que você modele um estado - por exemplo, crie uma representação simples de como o estado deve ser, atualize seu valor, monitore o estado quando o valor muda e recupere os valores do estado.
 
 As bibliotecas incluídas no pacote **NgRx** incluem:
