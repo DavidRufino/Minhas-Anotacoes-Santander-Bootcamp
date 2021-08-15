@@ -1,0 +1,15 @@
+@import "src/assets/variables";
+
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  > .container {
+    width: 600px;
+
+    > .button {
+      margin-bottom: $d-space;
+    }
+  }
+}

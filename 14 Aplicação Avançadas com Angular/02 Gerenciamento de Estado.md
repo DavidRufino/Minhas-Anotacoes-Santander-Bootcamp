@@ -23,7 +23,7 @@ Mas a **camada de Service** (também conhecida como camada de dados), que é rea
 
 
 
-### ngRx
+### NgRx
 
 É um conjunto de *bibliotecas* criado especificamente para **Gerenciar Estados em Aplicações *Angular*** totalmente baseado em **RxJS**. Ele torna o desenvolvimento Angular mais fácil, simplificando o estado do aplicativo em objetos e reforçando o fluxo de dados unidirecional.
 
@@ -55,12 +55,37 @@ As bibliotecas incluídas no pacote **NgRx** incluem:
 2. Criando um novo projeto Angular, no local especificado no **Terminal**: `ng new [NOME-DO-PROJETO]`
 3. Com o projeto Angular criado, abra o diretório do projeto pelo **Terminal**: `dir` e `cd [NOME-DO-PROJETO]`
 4. Instalando o [NgRx Store](https://ngrx.io/guide/store/install):  `ng add @ngrx/store@latest`
-5. Instalando o [NgRx Store](https://ngrx.io/guide/store-devtools/install) devtools:  `ng add @ngrx/store-devtools@latest`
+5. Instalando o [NgRx Store devtools](https://ngrx.io/guide/store-devtools/install):  `ng add @ngrx/store-devtools@latest`
 6. Instalando o [NgRx Effects](https://ngrx.io/guide/effects/install): `ng add @ngrx/effects@latest`
+7. Instalando o [NgRx Router Store](https://ngrx.io/guide/router-store/install): `ng add @ngrx/router-store@latest`
 
 
 
+No **app.module.ts** , podemos ver que foram importados os Module:
 
+```
+...
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
+@NgModule({
+  ...
+  imports: [
+    ...
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot()
+  ],
+  ...
+```
+
+- `StoreModule.forRoot` - ***NgRx Store***. Implementação completa de uma biblioteca para controle de estado em aplicações Angular totalmente **Redux-like** que utiliza extensões reativas (*RxJS*) em sua base;
+- `StoreDevtoolsModule.instrument` - ***NgRx Store devtools***. Serve para fazer a conexão com o estado da nossa aplicação, com a **extensão do Chrome [Redux DevTool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)**. É uma ferramenta que permite debugar em detalhes as mudanças de estado e que possui outros recursos interessantes, como navegar (voltar ou avançar) no tempo entre as mudanças ocorridas;
+- `EffectsModule.forRoot` -  ***NgRx Effects***. Biblioteca responsável por lidar com “efeitos colaterais” (*side-effects*) causados por *actions* que realizam tarefas assíncronas (como requisições http por ex.), isolando o tratamento desses efeitos de funções puras responsáveis somente por cuidar de mudanças de estado;
+- `StoreRouterConnectingModule.forRoot` - ***NgRx Router Store***. Serve para Conectar o Estado da Rota do Angular, e jogar essa informação dentro da **Store**;
 
 
 

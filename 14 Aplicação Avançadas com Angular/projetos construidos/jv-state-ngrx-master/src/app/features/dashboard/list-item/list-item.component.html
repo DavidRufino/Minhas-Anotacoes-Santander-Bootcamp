@@ -1,0 +1,20 @@
+<div class="item-card" *ngIf="!!item">
+  <label>{{ item.createdAt | date:'dd/MM/yyyy HH:mm' }}</label>
+
+  <h3 [class.done]="item.done">{{ item.title }}</h3>
+
+  <div class="actions">
+    <div class="first-column">
+      <div class="checkbox" (click)="markAsDone.emit(item.id)">
+        <input type="checkbox" [checked]="item.done">
+        <label for="checkbox"><span>Feito</span></label>
+      </div>
+    </div>
+
+    <div class="second-column">
+      <span *ngIf="false">Carregando</span>
+
+      <u *ngIf="true" (click)="remove.emit(item.id)">Deletar</u>
+    </div>
+  </div>
+</div>

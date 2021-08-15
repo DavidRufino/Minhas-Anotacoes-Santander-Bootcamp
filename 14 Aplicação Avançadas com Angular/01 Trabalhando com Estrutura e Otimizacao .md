@@ -46,7 +46,7 @@ export class ContentCChildComponent implements OnInit, AfterViewInit {
 }
 ```
 
-- **detach() ** - Desanexa esta **view** da **Change Detection Tree**. Uma **view** desanexada **não é verificada até que seja reanexada**. Use em combinação com `detectChanges()` para implementar **Change Detection** de mudanças locais.
+- **detach()** - Desanexa esta **view** da **Change Detection Tree**. Uma **view** desanexada **não é verificada até que seja reanexada**. Use em combinação com `detectChanges()` para implementar **Change Detection** de mudanças locais.
 - **detectChanges()** - Verifica esta **view** e seus **children**. Use em combinação com `detach()` para implementar **Change Detection** de mudança local. Disparar "uma rodada'" de **Change Detection**
 
 
