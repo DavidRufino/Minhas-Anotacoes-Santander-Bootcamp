@@ -324,6 +324,187 @@ Agora no **Redux DevTool**, podemos ver, em State, o nome e o email setado no fo
 
 ## Effects
 
+No caso do **login**, precisamos fazer uma chamada para o **SERVICE** , que ira popular a **STORE** com o resultado da chamada do **SERVICE**, que ira retornar o nosso *usuário*. Depois que esta chamada retornar, é preciso 'routear' o *usuário* para dentro da aplicação. 
+
+Acontece que o **REDUCER** não é feito para esta tarefa, o **REDUCER** recebe o State atual, recebe uma **ACTION** e devolve um **novo State modificado**. 
+
+Para fazer a chamada ao **SERVICE**, para 'routear' em outro lugar, nos não utilizamos o **REDUCER** (como é mostrado na **imagem do DIAGRAMA**), nos utilizaremos o **EFFECTS**.
+
+O **EFFECTS** é responsável por lidar com os **Side Effects** que uma **ACTION** pode ter. 
+
+Agora vamos criar um **EFFECTS** que será responsável por fazer o login e no final de todo o fluxo, teremos a nossa **STORE** atualizada e o nosso *usuário* 'routeado' para dentro da aplicação.
+
+Em `src\app\state\` criaremos o arquivo chamado: **app.effects.ts**
+
+```
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { map } from "rxjs/operators";
+import * as fromAppActions from "./app.actions";
+
+@Injectable()
+export class AppEffects {
+
+    //  Declarando o nosso primeiro 'Effects'
+    //  O EFFECT responde a uma ACTION
+    dologin$ = createEffect(() => this.actions$
+        .pipe(
+            ofType(fromAppActions.doLogin),
+            map(({ name, email }) => console.log(name, email)),
+        ),
+        {dispatch: false}
+    );
+
+    //  Declarar o nosso construtor, recebendo o Actions
+    //  este Actions extend Observable, por isso o 'dollar' ($) 
+    constructor(private actions$: Actions){  
+    }
+}
+```
+
+Já em **app.module.ts** adicionaremos o `EffectsModule.forRoot([AppEffects])` não esquecendo de importar `import { AppEffects } from './state/app.effects';`
+
+Agora no **Redux DevTool**, podemos ver, em Action, State, e no Console o valor 'printado' de login pelo **app.effects**. No momento, nos configuramos o **app.effects** para apenas dar um `console.log()`.
+
+
+
+Agora vamos atualizar o **app.effects**, para que ele faça oque e esperado por ele, que seria, fazer a  chamada do **SERVICE**, esperar a chamada retornar e etc.
+
+```
+import { Injectable } from "@angular/core";
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { of } from "rxjs";
+import { catchError, map, mergeMap } from "rxjs/operators";
+import { LoginService } from "../features/shared/services/login.service";
+import * as fromAppActions from "./app.actions";
+
+@Injectable()
+export class AppEffects {
+
+    //  Declarando o nosso primeiro 'Effects'
+    //  O EFFECT responde a uma ACTION
+    dologin$ = createEffect(() => this.actions$ //  estamos fazendo um pipe do observable que vai emitir todas as action que a app despachar
+        .pipe(  // dentro do pipe
+            ofType(fromAppActions.doLogin), // filtrando todas as actions, para passar so as que foram desse tipo especifico
+            mergeMap(({ name, email }) => this.loginService.login(name, email) // aqui estamos utilizando as informacoes que foram passadas, para fazer uma chamada ao Service
+                .pipe(  // dependendo do resultado
+                    map(user => {
+                        this.router.navigate(['']); //  REDIRECIONAR PARA UMA PAGINA/ROUTER quando login Sucess
+                        return fromAppActions.doLoginSucess({ user });    // Sucess é disparado
+                    }),
+                    catchError(() => of(fromAppActions.doLoginFailure())),  // ou failure
+                ),
+            ),
+        ),
+    );
+
+    //  Declarar o nosso construtor, recebendo o Actions
+    //  este Actions extend Observable, por isso o 'dollar' ($) 
+    constructor(private actions$: Actions,
+        private loginService: LoginService,
+        private router: Router) {
+    }
+}
+```
+
+Em **app.actions.ts** adicione os
+
+```
+import { User } from "../features/shared/models/user.model";
+...
+//  Adicionado para o effect retornar no caso de sucesso ou falha
+export const doLoginSucess = createAction(
+    '[API] Do Login Sucess',
+    props<{ user: User }>(), // Com a chamada sucess, retornar o User
+)
+export const doLoginFailure= createAction(
+    '[API] Do Login Failure',
+)
+```
+
+
+
+Agora atualizaremos o **app.reducer.ts** , para preencher a history com o usuário que foi retornado com sucesso.
+
+```
+import { Action, createReducer, on } from "@ngrx/store";
+import { User } from "../features/shared/models/user.model";
+import * as fromAppActions from './app.actions';
+
+// Primeiro é feito a definição do estado(State)
+export interface AppState {
+    // Esta é a 'cara' do State, que vai aparecer na STORE.
+    // A STORE vai ser populada com State que tem este 'tipo' (User)
+    user: User | undefined; 
+}
+
+export const initialState: AppState = {
+    //  Inicialmente, a STORE tera esta informação
+    user: undefined,    // user setado com undefined
+};
+
+/* Abaixo temos o Combo de definição de REDUCER */
+
+const appStateReducer = createReducer(
+    // createReducer é uma function do NgRx
+    // É onde nos passamos o STATE inicial PRIMEIRO, depois é passado outras informações
+    initialState,
+    // AGORA NA PARTE 2, depois de ter criado o action e editado o component.
+    //  basicamente, faremos um switch case
+    //  O createReducer, depois de initialState, é aceitavel N parametros
+    //  e estes parametros tem este tipo on()
+    //  que vai receber
+    // LEIA: Quando esta actio (fromAppActions.doLogin) for disparada, vamos receber este estado e devolver o mesmo estado
+    on(fromAppActions.doLoginSucess, (state, { user }) => ({
+        ...state,
+        user,
+    })), 
+    // ...state significa: ok este objeto que estou retornando, ele é uma copia do meu state atual, mas calma, quero modificar o user
+    // para poupar problemas futuros, se poem o ... caso tenha que extender o AppState, pondo mais informações, alem de user
+    // o ...state.user, e um exemplo apra poupar problemas futuros, caso tenha que adicionar, por exemplo, o atributo id ou telefone no user
+    //  Agora o REDUCER recebera as informações de ACTION que foi criada no formulario login
+
+    // { name, email } tem que ser igual a como foi definido no ACTION no method doLogin();
+);
+
+export function reducer(state: AppState | undefined, action: Action): AppState {
+    // Temos aqui uma função pura, que aceita o
+    // STATE atual, uma action e retorna o STATE modificado
+    // com retorno chamando o appStateReducer
+    return appStateReducer(state, action);
+}
+```
+
+**login.service.ts** localizado em `app\features\shared\services` ou utilizando comando: `ng g service features\shared\services\login`
+
+```
+import { Injectable } from "@angular/core";
+
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+import { User } from '../models/user.model';
+
+@Injectable({ providedIn: 'root' })
+export class LoginService {
+
+  login(name: string, email: string): Observable<User> {
+    return of({ name, email })
+      .pipe(delay(2000));
+  }
+}
+
+```
+
+Agora no **Redux DevTool**, podemos ver, a **ACTION** disparada e em seguida (com o delay adicionado) uma chamada para o **SERVICE** e em seguida, será redirecionado para a pagina especificada no router.
+
+
+
+## Selector
+
+
+
 
 
 # Referência
