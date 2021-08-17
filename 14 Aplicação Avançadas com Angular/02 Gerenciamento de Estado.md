@@ -113,13 +113,13 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 ```
 import { Action, createReducer } from "@ngrx/store";
-import { User } from "./shared/models/user.model";
+import { User } from "../features/shared/models/user.model";
 
 // Primeiro é feito a definição do estado(State)
 export interface AppState {
     // Esta é a 'cara' do State, que vai aparecer na STORE.
     // A STORE vai ser populada com State que tem este 'tipo' (User)
-    user: User; 
+    user: User | undefined; 
 }
 
 export const initialState: AppState = {
@@ -149,7 +149,180 @@ Agora em **app.module.ts**,  o `StoreModule.forRoot({}, {}),` receberá o **REDU
 
 ## Action
 
+Antes de sair criando ACTION, verifique se a necessidade em criar uma **ACTION** e como essa necessidade vai se comportar. Vejamos no nosso **login.component.html** que estará localizado em `features\login\containers\login` ou o comando `ng g component features\login\containers\login`
 
+```
+<form [formGroup]="form" (ngSubmit)="login()">
+    <label>Nome</label>
+    <input formControlName="name">
+  
+    <label>E-mail</label>
+    <input formControlName="email">
+  
+    <button class="primary">Login</button>
+  </form>
+```
+
+Uma vez que for pressionado o button: **login** será executado o method: `login()` localizado em **login.component.ts** (na mesma pasta que **login.component.html**)
+
+```
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.reducer';
+
+@Component({
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent {
+
+  form = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  constructor() { }
+
+  login() { }
+}
+```
+
+`login()` fara uma chamada de serviço, que retornara nosso **usuário**. Uma vez que, usuário seja retornado, temos que rotear ele para dentro.
+
+
+
+Conforme o <u>NGRX STATE MAGAGEMENT LIFECYCLE</u>. A forma que o **COMPONENT** tem, de se comunicar com **STORE** é disparando uma **ACTION**.
+
+Vamos criar então o arquivo **app.actions.ts** que ficará em `src\app\state\`  para fazer as definições da **ACTION**:
+
+```
+import { createAction, props } from "@ngrx/store";
+
+//  Diferente do REDUCER, que tem uma definição de state, tendo que registrar ele no modulo etc
+//  Uma ACTION nada mais é que uma função, nao precisamos registrar o doLogin em lugar algum
+//  so precisamos definir e exportar esta constante para que possamos tuilzia-la em qualquer lugar
+export const doLogin = createAction(
+    //  createAction espera receber pelo menos um parametro
+    //  PADROES do NGRX:
+    //  As ACTIONS são definidas em duas partes:
+    //  Primeiro fica dentro de [] ou colchetes 
+    //  e o Segundo fica fora
+    //  A informação que estiver dentro dos colchetes, normalmente é o contexto desta
+    //  de onde esta ACTION esta sendo disparada
+    //  no caso: [Login]
+    '[Login] Do Login',
+
+    //  Forma de passa a informação para dentro da STORE
+    props<{ name: string, email: string }>(),
+);
+
+//  Agora que temos uma definição na nossa ACTION
+//  Podemos despacha-la para dentro do nosso login.component.ts
+```
+
+Uma Action possui um tipo, e este tipo não e obrigatório ser único,mas é mais interessante ter tipos únicos, **para não gerar conflitos**, quando estiver fazendo definições dentro do **REDUCER**.
+
+
+
+## Component
+
+Voltando para o **login.component**, vamos chamar o method `doLogin()` que foi criado no **ACTION**
+
+```
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.reducer';
+import * as fromAppActions from '../../../../state/app.actions';
+
+
+@Component({
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent {
+
+  form = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  constructor(private store: Store<AppState>) {
+    //  Primeiro, importaremos o STORE no nosso COMPONENT
+  }
+
+  login() {
+    //  Agora podemos utilizar a STORE para disparar a informação
+    this.store.dispatch(fromAppActions.doLogin(this.form.value)); // Aqui vamos dispachar uma ACTION
+    // Como parametro deste dispatch, e esperado receber uma ACTION
+  }
+}
+//  Se salvarmos agora e preenchermos o formulario e clicar no button login, nos nao iremos ver a STORE atualizar ainda. verifique no Console Redux DevTools do Chrome
+```
+
+
+
+Voltando para o **app.reducer.ts** 
+
+```
+import { Action, createReducer, on } from "@ngrx/store";
+import { User } from "../features/shared/models/user.model";
+import * as fromAppActions from './app.actions';
+
+// Primeiro é feito a definição do estado(State)
+export interface AppState {
+    // Esta é a 'cara' do State, que vai aparecer na STORE.
+    // A STORE vai ser populada com State que tem este 'tipo' (User)
+    user: User | undefined; 
+}
+
+export const initialState: AppState = {
+    //  Inicialmente, a STORE tera esta informação
+    user: undefined,    // user setado com undefined
+};
+
+/* Abaixo temos o Combo de definição de REDUCER */
+
+const appStateReducer = createReducer(
+    // createReducer é uma function do NgRx
+    // É onde nos passamos o STATE inicial PRIMEIRO, depois é passado outras informações
+    initialState,
+    // AGORA NA PARTE 2, depois de ter criado o action e editado o component.
+    //  basicamente, faremos um switch case
+    //  O createReducer, depois de initialState, é aceitavel N parametros
+    //  e estes parametros tem este tipo on()
+    //  que vai receber
+    // LEIA: Quando esta actio (fromAppActions.doLogin) for disparada, vamos receber este estado e devolver o mesmo estado
+    on(fromAppActions.doLogin, (state, { name, email }) => ({
+        ...state,
+        user: {
+            ...state.user,
+            name,
+            email,
+        }
+    })), 
+    // ...state significa: ok este objeto que estou retornando, ele é uma copia do meu state atual, mas calma, quero modificar o user
+    // para poupar problemas futuros, se poem o ... caso tenha que extender o AppState, pondo mais informações, alem de user
+    // o ...state.user, e um exemplo apra poupar problemas futuros, caso tenha que adicionar, por exemplo, o atributo id ou telefone no user
+    //  Agora o REDUCER recebera as informações de ACTION que foi criada no formulario login
+
+    // { name, email } tem que ser igual a como foi definido no ACTION no method doLogin();
+);
+
+export function reducer(state: AppState | undefined, action: Action): AppState {
+    // Temos aqui uma função pura, que aceita o
+    // STATE atual, uma action e retorna o STATE modificado
+    // com retorno chamando o appStateReducer
+    return appStateReducer(state, action);
+}
+```
+
+Agora no **Redux DevTool**, podemos ver, em State, o nome e o email setado no formulário. Agora podemos obter a informação do componente, e injeta-lo dentro do State.
+
+
+
+## Effects
 
 
 
