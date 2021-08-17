@@ -503,7 +503,70 @@ Agora no **Redux DevTool**, podemos ver, a **ACTION** disparada e em seguida (co
 
 ## Selector
 
+Com **SELECTOR**, será possível, por exemplo, pegar apenas o **nome** do *usuário* da **STORE** e exibi-la na pagina. Para isso, vamos criar o **SELECTOR** em `src\app\state\` com nome **app.selectors.ts**
 
+```
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { User } from '../features/shared/models/user.model';
+import { AppState } from './app.reducer';
+
+// Da mesma forma que as ACTIONS e diferentemente dos REDUCERS e dos EFFECTS
+// Os SELECTORS não precisam ser registrados em lugar algum
+// Ele simplesmente e uma constant da mesma forma que as ACTIONS
+
+// SELECTOR é um seletor que é responsavel por pegar uma propeties, que esta na raiz da STORE
+// Ex.p: o 'userContext' exibido no Redux Extension
+export const selectUserContext = createFeatureSelector<{ user: User }>('userContext');
+
+export const selectUserName = createSelector(
+  selectUserContext,
+  (state: AppState) => state.user?.name,
+);
+```
+
+Adicione ` <p>Ola, : {{ name$ | async }}</p>` no **login.component.html**
+
+E em **login.component.ts**
+
+```
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
+import { Observable } from "rxjs";
+import { AppState } from 'src/app/state/app.reducer';
+import * as fromAppActions from '../../../../state/app.actions';
+import * as fromAppSelectors from '../../../../state/app.selectors';
+
+
+@Component({
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+})
+export class LoginComponent {
+
+  form = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  name$: Observable<string | undefined>;
+
+  constructor(private store: Store<AppState>) {
+    //  Primeiro, importaremos o STORE no nosso COMPONENT
+    // Agora vamos receber um novo valor toda vez que o nome do usuario for modificado
+    this.name$ = this.store.pipe(select(fromAppSelectors.selectUserName)); 
+  }
+
+  login() {
+    //  Agora podemos utilizar a STORE para disparar a informação
+    this.store.dispatch(fromAppActions.doLogin(this.form.value)); // Aqui vamos dispachar uma ACTION
+    // Como parametro deste dispatch, e esperado receber uma ACTION
+  }
+}
+//  Se salvarmos agora e preenchermos o formulario e clicar no button login, nos nao iremos ver a STORE atualziar ainda
+```
+
+Agora quando o usuário fizer o login, o campo Name exibira o nome do usuário.
 
 
 
