@@ -1,168 +1,118 @@
-# Segregando responsabilidades
+# Segregando a aplicação em Módulos e trabalhando com Rotas
 
+#### Exemplo Simples de Pagina login
 
-
-## Requisições em HTTP no Angular
-
-
-
-#### HttpClient
-
-É usado para fazer a comunicação entre cliente e servidor usando o **protocolo HTTP**. Para consumir dados de uma API externa o **[HttpClient](https://angular.io/guide/http#setup-for-server-communication)** facilitará essa comunicação, através de muitos métodos disponíveis: **post()**, **get()**, **put()**, **delete()**, **patch()**, **request()**, **head()**, **jsonp()**, **options()**.
-
-
-
-#### Importando o HttpClientModule
-
-em `src\app\app.module.ts`
+Criando um modulo login: `app\features\login\login.module.ts`  ou comando `ng g module features\login` contendo:
 
 ```
-import { HttpClientModule } from '@angular/common/http';
-...
+import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { LoginComponent } from './containers/login/login.component';
+import { RouterModule } from "@angular/router";
+
 @NgModule({
-	...
-	imports: [
-	...
-	HttpClientModule
-	]
-	...
+  declarations: [
+    LoginComponent,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([
+        {
+            //  Quando for para a url localhost:4200/login
+            //  sera redirecionado para a roda de LoginComponent
+            path: 'login', component: LoginComponent
+          }
+    ])
+  ]
 })
-```
-
-Dentro de **imports** do `@NgModule`, adicione o modulo **HttpClientModule**
-
-
-
-#### Trabalhando com GET
-
-em `src\app\courses\course.service.ts` (path de [exemplo do projeto](https://github.com/DavidRufino/Projeto-Simples-Com-Angular)):
-
-```
-import { HttpClient } from "@angular/common/http";
-import { Course } from './course';
-...
-
-@Injectable({
-    providedIn: 'root'
-})
-export class CourseService {
-	...
-	//	Endereço da API REST
-	private courseUrl: string = "http://localhost:3100/api/courses";
-	
-	//  GET Method retrieveAll
-    retrieveAll(): Observable<Course[]> {
-    //	Retorna uma LISTA de COURSE
-        return this.httpClient.get<Course[]>(this.courseUrl);
-    }
-
-    //  GET Method retrieveById
-    retrieveById(id: number): Observable<Course> {
-    //	Retorna UM COURSE pelo seu ID
-        return this.httpClient.get<Course>(`${this.courseUrl}/${id}`);
-    }
-    ...
+export class LoginModule {
 }
 ```
 
 
 
-Agora em `src\app\course\course-list.component.ts` foi adicionado:
+Criando os componentes de login: `app\features\login\containers\login\login.component` ou comando `ng g component features\login\containers\login` contendo:
+**Login.component.html**
 
 ```
-import { Component, OnInit } from "@angular/core";
-import { Course } from './course';
-import { CourseService } from "./course.service";
+<form [formGroup]="form" (ngSubmit)="login()">
+    <label>Nome</label>
+    <input formControlName="name">
+  
+    <label>E-mail</label>
+    <input formControlName="email">
+  
+    <button class="primary">Login</button>
+</form>
+```
+
+**Login.component.ts**
+
+```
+import { Component } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.reducer';
 
 @Component({
-    templateUrl: './course-list.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class CourseListComponent implements OnInit {
-	
-	_courses: Course[] = [];
-	
-	constructor(private courseService: CourseService) {}
-	
-	ngOnInit(): void {
-        this.retrieveAll();
-    }
-    
-    retrieveAll(): void {
-        //  é assincrono
-        this.courseService.retrieveAll().subscribe({
-            next: courses => {
-                this._courses = courses;
-            },
-            error: err => console.log("Error", err)
-        });
-    }
+export class LoginComponent {
+
+  form = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+  });
+
+  constructor() { }
+
+  // Metodo login()
+  login() { }
 }
 ```
 
-No exemplo acima, quando ele for iniciado, ira executar o method: **retrieveAll()** que chamara o **courseService.retrieveAll()** configurado no  `course.service.ts`.
 
 
-
-#### Trabalhando com PUT
-
-em `src\app\courses\course.service.ts` (path de [exemplo do projeto](https://github.com/DavidRufino/Projeto-Simples-Com-Angular)), semelhante ao **GET**:
+Agora em **app.module.ts**, precisa apenas adicionar o `LoginModule` no **@NgModule-imports** e remover o `LoginComponente` de **@NgModule-declarations** 
 
 ```
-...
-export class CourseService {
-	private courseUrl: string = "http://localhost:3100/api/courses";
-	...
-	//  PUT Method save
-    save(course: Course): Observable<Course> {
-        //  Se course.id estiver PREENCHIDO
-        if (course.id) {
-            //   nao é aspas, é acento grave ` `
-            return this.httpClient.put<Course>(`${this.courseUrl}/${course.id}`, course);
-        } else { 
-            return this.httpClient.put<Course>(`${this.courseUrl}`, course);
-        }
-    }
-}
-```
-
-[*] no exemplo acima é utilizado acento grave ` na abertura e fechamento.
-
-
-
-No projeto, quem fara uso desse method **save()** será o `src\app\courses\course-info.component.ts`:
-
-```
-import { Course } from "./course";
-import { CourseService } from "./course.service";
-...
-
-@Component({
-    templateUrl: './course-info.component.html'
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    LoginModule,
+    RouterModule.forRoot([
+      {
+        //  path vazio estamos dizendo que é na url root (localhost:4200)
+        //  Quando ele for para root da aplicação (localhost:4200) 
+        //  ele redireciona para 'login' url: localhost:4200/login
+        path: '', redirectTo: 'login', pathMatch: 'full'
+      }
+    ]),
+    StoreModule.forRoot({userContext: reducer}, {})
+    //,
+    //StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    //EffectsModule.forRoot([]),
+    //StoreRouterConnectingModule.forRoot()
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class CourseInfoComponent implements OnInit{
-    
-    //  Receber o Path variable
-    course?: Course;
-    
-    constructor(private activatedRoute: ActivatedRoute, private courseService: CourseService) {}
-	...
-    save(): void {
-        //  tem que adicionar .susbcribe para realizar esta chamada
-        this.courseService.save(this.course as Course).subscribe({
-            next: course => console.log("Saved with sucess", course),
-            error: err => console.log("Error", err)
-        })
-    }
-}
+export class AppModule { }
 ```
 
-No exemplo acima, quando o `<button>Save</button>`  do `templateUrl: './course-info.component.html'` for  pressionado, será executado o method **save()** que chamara o **courseService.save()**.
+Agora em **app.component.html**, adicione a diretiva de **Router**, [`router-outlet`](https://angular.io/api/router/RouterOutlet)
 
-
-
-## Segregando a aplicação em Módulos
-
-Para gerar seu próprio **module**, abra um terminal na pasta do seu projeto de aplicativo. e Execute no terminal: `ng generate module [name]`
+```
+<router-outlet></router-outlet>
+```
 
 
 
@@ -182,11 +132,12 @@ Tem um *componente* que aparece em **vários lugares**? *Shared*. Tem um **compo
 
 
 
-# Referências
+# Referência
 
-Malcoded. **Lern how to split your Angular App into Modules [Includes Lazy-Loading]** - https://malcoded.com/posts/angular-fundamentals-modules/
+Balta. **Angular: Rotas, Guardas e Navegação** - https://balta.io/blog/angular-rotas-guardas-navegacao
 
 Bruno Brito. **Angular - Como estruturar componentes em grandes projetos** - https://www.brunobrito.net.br/estruturando-components-angular/
 
-Wands Macêdo **Pasta/módulo Core** - https://cursos.alura.com.br/forum/topico-pasta-modulo-core-76030
+Malcoded. **Lern how to split your Angular App into Modules [Includes Lazy-Loading]** - https://malcoded.com/posts/angular-fundamentals-modules/
 
+Wands Macêdo **Pasta/módulo Core** - https://cursos.alura.com.br/forum/topico-pasta-modulo-core-76030

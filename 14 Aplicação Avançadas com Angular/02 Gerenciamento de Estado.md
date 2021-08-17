@@ -4,7 +4,7 @@
 
 ## O que são Services
 
-Service é o **objeto usado para organizar e/ou compartilhar estados de objetos e as regras de negócio da aplicação**. Ele é **singleton**, ou seja, há apenas uma instância disponível durante a vida útil da aplicação. Outra característica importante é a inicialização tardia (**lazily instantiated**), que só é efetuada quando o Angular identifica que tem algum componente dependente.
+É o **objeto usado para organizar e/ou compartilhar estados de objetos e as regras de negócio da aplicação**. Ele é **singleton**, ou seja, há apenas uma instância disponível durante a vida útil da aplicação. Outra característica importante é a inicialização tardia (**lazily instantiated**), que só é efetuada quando o Angular identifica que tem algum componente dependente.
 
 Opa, espera aí! **O *Controller* não é o lugar de controle da view?** Logo, **não é nele que eu tenho que ter as regras de negócio?** Sim, o **Controller** de fato controla a camada de visão, porém, **não é ele que armazena as regras que são compartilhadas na aplicação**. O **Controller** gerencia **APENAS as regras referentes a VIEW** a qual está associado.  Vou enumerar porquê as regras devem ir para um **SERVICE**:
 
@@ -15,7 +15,7 @@ Opa, espera aí! **O *Controller* não é o lugar de controle da view?** Logo, *
 
 
 
-## Desenvolvendo State Management com NgRx
+# Desenvolvendo State Management com NgRx
 
 Com o **Angular**, projetar e desenvolver a **Camada VIEW** de nosso aplicativo é mais simples do que nunca.
 
@@ -53,7 +53,7 @@ As bibliotecas incluídas no pacote **NgRx** incluem:
 
 ### NgRx Store
 
-É um **Sistema de Gerenciamento de Estado** inspirado no **Redux **que permite usar **Observables** para gerenciar o estado em um aplicativo Angular. A principal vantagem de usar o **NgRx Store** é a capacidade de **Armazenar todos os Estados em uma Única Árvore** que pode ser acessada de **qualquer parte do aplicativo**.
+É um **Sistema de Gerenciamento de Estado** inspirado no **Redux** que permite usar **Observables** para gerenciar o estado em um aplicativo Angular. A principal vantagem de usar o **NgRx Store** é a capacidade de **Armazenar todos os Estados em uma Única Árvore** que pode ser acessada de **qualquer parte do aplicativo**.
 
 ### NgRx Effects
 
@@ -67,7 +67,7 @@ Existe para que seja possível que a **STORE** seja a **fonte única da verdade*
 
 
 
-### Aplicativo Angular simples usando NgRx
+# Aplicativo Angular simples usando NgRx
 
 1. Instalando o Angular CLI: `npm install -g @angular/cli`
 2. Criando um novo projeto Angular, no local especificado no **Terminal**: `ng new [NOME-DO-PROJETO]`
@@ -100,7 +100,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   ...
 ```
 
-- `StoreModule.forRoot` - ***NgRx Store***. Implementação completa de uma biblioteca para controle de estado em aplicações Angular totalmente **Redux-like** que utiliza extensões reativas (*RxJS*) em sua base;
+- `StoreModule.forRoot` - ***NgRx Store***. Implementação completa de uma biblioteca para controle de estado em aplicações Angular totalmente **Redux-like** que utiliza extensões reativas (*RxJS*) em sua base. Ele espera receber um **app REDUCER map**;
 - `StoreDevtoolsModule.instrument` - ***NgRx Store devtools***. Serve para fazer a conexão com o estado da nossa aplicação, com a **extensão do Chrome [Redux DevTool](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd)**. É uma ferramenta que permite debugar em detalhes as mudanças de estado e que possui outros recursos interessantes, como navegar (voltar ou avançar) no tempo entre as mudanças ocorridas;
 - `EffectsModule.forRoot` -  ***NgRx Effects***. Biblioteca responsável por lidar com “efeitos colaterais” (*side-effects*) causados por *actions* que realizam tarefas assíncronas (como requisições http por ex.), isolando o tratamento desses efeitos de funções puras responsáveis somente por cuidar de mudanças de estado;
 - `StoreRouterConnectingModule.forRoot` - ***NgRx Router Store***. Serve para Conectar o Estado da Rota do Angular, e jogar essa informação dentro da **`STORE`**;
@@ -109,11 +109,47 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 ## Reducer
 
-É uma função pura. Será aonde se faz a **configuração do estado**. Criamos então em `src\app\state\` o arquivo **app.reducer.ts** contendo:
+É uma função pura. É aonde estaremos criando um pedaço dentro da STORE. Será aonde se faz a **configuração do estado**. Criamos então em `src\app\state\` (opcional) o arquivo **app.reducer.ts** contendo:
 
 ```
+import { Action, createReducer } from "@ngrx/store";
+import { User } from "./shared/models/user.model";
 
+// Primeiro é feito a definição do estado(State)
+export interface AppState {
+    // Esta é a 'cara' do State, que vai aparecer na STORE.
+    // A STORE vai ser populada com State que tem este 'tipo' (User)
+    user: User; 
+}
+
+export const initialState: AppState = {
+    //  Inicialmente, a STORE tera esta informação
+    user: undefined,    // user setado com undefined
+};
+
+/* Abaixo temos o Combo de definição de REDUCER */
+
+const appStateReducer = createReducer(
+    // createReducer é uma function do NgRx
+    // É onde nos passamos o STATE inicial PRIMEIRO, depois é passado outras informações
+    initialState,
+);
+
+export function reducer(state: AppState | undefined, action: Action): AppState {
+    // Temos aqui uma função pura, que aceita o
+    // STATE atual, uma action e retorna o STATE modificado
+    // com retorno chamando o appStateReducer
+    return appStateReducer(state, action);
+}
 ```
+
+Agora em **app.module.ts**,  o `StoreModule.forRoot({}, {}),` receberá o **REDUCER map** ficando assim: `StoreModule.forRoot({userContext: reducer}, {})`. Não esquecendo de dar `import { reducer } from './state/app.reducer';`
+
+
+
+## Action
+
+
 
 
 

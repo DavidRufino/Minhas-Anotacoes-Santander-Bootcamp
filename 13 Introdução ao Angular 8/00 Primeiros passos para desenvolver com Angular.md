@@ -42,12 +42,11 @@ Com o **node.js** instalado, no *Terminal* digite:
 
 - [`ng g [SUB-COMANDO] [NOME-DO-ARQUIVO]`](https://angular.io/cli/generate) - Gera (**g** de **g**enerate) um arquivo via *Terminal*; Para adicionar pastas no comando, apenas digite em **[NOME-DO-ARQUIVO]**. Todo o '*caminho*' para chegar a este **novo arquivo**. Exp: `features\create\[NOME-DO-ARQUIVO]`.
   Seguintes **SUB-COMANDO**:
-
   - `app-shell` 
-
+  
   - `application` 
   - `class` 
-  - `component` 
+  - `component`
   - `directive` 
   - `enum` 
   - `guard` 
