@@ -1,3 +1,8 @@
+| [ANTERIOR](00%20Primeiros%20passos%20para%20desenvolver%20com%20Angular.md) | [PRÓXIMO](02%20Segregando%20responsabilidades.md) |
+| ------------------------------------------------------------ | ------------------------------------------------- |
+
+
+
 # Lidando com vários componentes
 
 
