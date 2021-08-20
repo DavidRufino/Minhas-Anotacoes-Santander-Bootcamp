@@ -26,7 +26,7 @@ Sinta-se à vontade em agregar as anotações também.
 
 **[Introdução ao Framework Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/08%20Introdu%C3%A7%C3%A3o%20ao%20Framework%20Spring%20Boot)** apresentado pelo **Rodrigo Peleias**
 
-**[Construindo um sistema de controle de ponto e acesso com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/09%20Dicas%20da%20Construcao%20do%20sistema%20de%20controle)** apresentado pelo **Rodolfo Gomes**
+**[Construindo um sistema de controle de ponto e acesso com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/09%20Dicas%20da%20Construcao%20do%20sistema%20de%20controle)** apresentado pelo **Rodolfo Gomes** e **Kamila Santos**
 
 **[Desenvolvendo um sistema de gerenciamento de pessoas em API REST com Spring Boot](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/10%20Dicas%20de%20Desenvolvimento%20de%20API%20REST%20com%20Spring%20Boot)** apresentado pelo **Rodrigo Peleias**
 
@@ -34,7 +34,7 @@ Sinta-se à vontade em agregar as anotações também.
 
 **[Introdução a criação de Websites com HTML5 e CSS3](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/12%20Introdu%C3%A7%C3%A3o%20a%20cria%C3%A7%C3%A3o%20de%20websites%20com%20HTML5%20e%20CSS3)** apresentado pelo **Lucas Vilaboim**
 
-**[Introdução ao Angular 8](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/13%20Introdu%C3%A7%C3%A3o%20ao%20Angular%208)** apresentado pelo **Wesllhey Holanda**
+**[Introdução ao Angular 8](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/13%20Introdu%C3%A7%C3%A3o%20ao%20Angular%208)** apresentado pelo **Wesllhey Holanda** e **Kamila Santos**
 
 **[Aplicações avançadas com Angular](https://github.com/DavidRufino/Minhas-Anotacoes-Santander-Bootcamp/tree/master/14%20Aplica%C3%A7%C3%A3o%20Avan%C3%A7adas%20com%20Angular)** apresentado pelo **Renan Rafael Bertoldo** e **João Ghignatti**
 

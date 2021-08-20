@@ -183,6 +183,14 @@ web: java -Dserver.port=$PORT $JAVA_OPTS -jar  build/libs/[NOME-rootProject.name
 
 Facilita na conversão entre **DTO** para Entidade (**Entity**) e de uma **Entity** para **DTO**.
 
+**Gradle**
+
+```
+	//	MapStruct
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+```
+
 
 
 # Hibernate Validator
