@@ -1,3 +1,8 @@
+| [ANTERIOR](00%20Introdu%C3%A7%C3%A3o%20e%20Change%20Detection.md) | [PRÓXIMO](02%20Gerenciamento%20de%20Estado.md) |
+| ------------------------------------------------------------ | ---------------------------------------------- |
+
+
+
 # Trabalhando com Estrutura e Otimização
 
 

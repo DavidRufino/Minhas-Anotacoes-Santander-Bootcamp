@@ -1,3 +1,8 @@
+| [ANTERIOR](01%20Trabalhando%20com%20Estrutura%20e%20Otimizacao%20.md) |      |
+| ------------------------------------------------------------ | ---- |
+
+
+
 # Gerenciamento de Estado
 
 

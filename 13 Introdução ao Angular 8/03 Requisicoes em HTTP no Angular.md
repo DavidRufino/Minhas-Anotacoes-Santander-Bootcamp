@@ -1,3 +1,6 @@
+| [ANTERIOR](02%20Segregando%20responsabilidades.md) |      |
+| -------------------------------------------------- | ---- |
+
 # Requisições em HTTP no Angular
 
 
